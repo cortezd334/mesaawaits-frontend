@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { createUser } from '../api';
+import { useHistory } from 'react-router-dom';
 
-function SignUp () {
+function SignUp ( {setUser}) {
 
+    const history = useHistory();
     const signUp = {
         name: '',
         username: '',
@@ -20,7 +22,16 @@ function SignUp () {
     function handleSubmit(e) {
         e.preventDefault();
         createUser({user: {...form}})
+        .then(json => {
+            if(!json.error){
+                setUser(json)
+                history.push("/profile")
+            } else {
+                alert(json.error)
+            }
+        })
     }
+    //do I want to redirect to login or to profile ? only change ('/login') : make same as login
 
     return (
     <form onSubmit={handleSubmit}>

@@ -1,31 +1,72 @@
 const API = 'http://localhost:3000';
+//how can I pass user here?
+//as props if I feed it through
+//doesn't that take away some of the functionality?
+//make this fetch in reservation?
 
-    // fetch(`${API}/search`)
-    // .then(res => res.json())
-    // .then(console.log)
+const token = localStorage.getItem('token')
+
+const headers = {
+    'Content-Type': 'application/json',
+    Accept: 'application/json',
+}
+
+const authHeaders = {
+    'Content-Type': 'application/json',
+    Accept: 'application/json',
+    Authorization: `Bearer ${token}`
+}
+
+
+// export async function handleAuthResponse(resp) {
+//     if(resp.user){
+//         localStorage.token = resp.token
+//         setUser({id: json.user.id, username: json.user.username, token: json.token})
+//         history.push("/profile")
+//     }
+//   }
 
 export const search = (body) => {
     console.log(body)
     return fetch(`${API}/search`, {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
+        headers: headers,
         body: JSON.stringify(body)
     })
     .then(res => res.json())
     .then(console.log)
 }
 
-export const createUser = (data) => {
-    fetch(`${API}/users`, {
+export async function createUser(data) {
+    const resp = await fetch(`${API}/users`, {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
-        },
+        headers: headers,
         body: JSON.stringify(data)
     })
-    .then(res => res.json())
-    .then(console.log)
+    return await resp.json()
+}
+
+export async function login(data) {
+    const resp = await fetch(`${API}/login`, {
+        method: 'POST',
+        headers: headers,
+        body: JSON.stringify(data)
+    })
+    return await resp.json();
+}
+
+// export async function newRes(data) {
+//     const resp = await fetch(`${API}/reservations`, {
+//         method: 'POST',
+//         headers: authHeaders,
+//         body: JSON.stringify(data)
+//     })
+//     return await resp.json();
+// }
+
+export async function persist(data) {
+    const resp = await fetch(`${API}/persist`, {
+        headers: authHeaders
+    })
+    return await resp.json();
 }
