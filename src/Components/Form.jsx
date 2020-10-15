@@ -21,11 +21,11 @@ function Form() {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label> Cuisine:
+        <form className='form' onSubmit={handleSubmit}>
+            <label className='item pad'> Cuisine:
                 <input type='text' value={form.cuisine} name='cuisine' onChange={handleChange}/>
             </label>
-            <label> Location:
+            <label className='item pad'> Location:
                 <input type='text' value={form.location} name='location' onChange={handleChange}/>
             </label>
             <input type='submit' value='Submit'/>
