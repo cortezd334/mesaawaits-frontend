@@ -1,0 +1,23 @@
+
+.navbar {
+    display: block;
+    /* justify-self: flex-end; */
+    background-color: aqua;
+    padding: 2rem;
+    /* justify-content: center; */
+}
+
+.logo {
+    text-decoration: none;
+}
+
+.item {
+    font-size: 24px;
+    margin: 0rem 1rem 0rem 1rem;
+    color: black;
+}
+
+.position {
+    position: relative;
+    left: 60rem;
+}

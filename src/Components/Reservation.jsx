@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { newRes } from '../api';
+// import { newRes } from '../api';
 
 export default function Reservation({user, setUser}) {
     
@@ -21,8 +21,7 @@ export default function Reservation({user, setUser}) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        // newRes(form)
-        // .then(console.log)
+
         fetch(`http://localhost:3000/reservations`, {
         method: 'POST',
         headers: {
@@ -35,27 +34,27 @@ export default function Reservation({user, setUser}) {
         .then(console.log)
     }
 
-    
+
     return(
-    <form onSubmit={handleSubmit}>
-        <label> Name:
+    <form className='form' onSubmit={handleSubmit}>
+        <label className='item pad stack'> Name:
             <input type='text' value={form.name} name='name' onChange={handleChange}/>
         </label>
         <br/>
-        <label> Date:
+        <label className='item pad stack'> Date:
             <input type='text' value={form.date} name='date' onChange={handleChange}/>
         </label>
         <br/>
-        <label> Time:
+        <label className='item pad stack'> Time:
             <input type='text' value={form.time} name='time' onChange={handleChange}/>
         </label>
         <br/>
-        <label> Party Size:
+        <label className='item pad stack'> Party Size:
             <input type='number' value={form.partySize} name='partySize' onChange={handleChange}/>
         </label>
         <br/>
-        <label> Special Occasion:
-            <select value={form.occasion}>
+        <label className='item pad stack'> Special Occasion:
+            <select value={form.occasion} name='occasion' onChange={handleChange}>
                 <option value='false'>None</option>
                 <option value='Birthday'>Birthday</option>
                 <option value='Anniversary'>Anniversary</option>
@@ -66,7 +65,7 @@ export default function Reservation({user, setUser}) {
             </select>
         </label>
         <br/>
-        <label> Notes:
+        <label className='item pad stack'> Notes:
             <textarea value={form.notes} name='notes' onChange={handleChange}/>
         </label>
         <br/>
