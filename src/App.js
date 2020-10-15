@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 // import './css/App.css';
 import Map from './Components/Map';
-import Form from './Components/Form';
+import Search from './Components/Search';
 import Profile from './Components/Profile';
 // import { SearchProvider } from './Components/searchContext';
 import SignUp from './Components/SignUp';
@@ -26,25 +26,19 @@ function App() {
   }, [])
   //will run again when the dependency changes: maybe put user in []
 
-  useEffect(() => {
-
+  const [restaurants, setRestaurants] = useState([])
+  const [user, setUser] = useState({
+    user:{}
   })
-
-  const [user, setUser] = useState(false)
-  // const [user, setUser] = useState({
-  //   id: 0,
-  //   username: '',
-  //   token: ''
-  // })
-  //UserSerializer not set, may have to change so more info is shown
+  const [center, setCenter] = useState({
+    lat: 37.7599,
+    lng: -122.4148
+  })
 
   const handleAuthResponse = (resp) => {
     if(resp.user){
         localStorage.token = resp.token
-        // setUser({user: {id: resp.user.id, username: resp.user.username}, token: resp.token})
         setUser({user: resp.user, token: resp.token})
-        // setUser(resp)
-        console.log(resp)
     } else {
       alert(resp.error)
     }
@@ -55,17 +49,12 @@ function App() {
     history.push('/')
   }
 
+  console.log(restaurants)
   return (
     <>
     <Router>
       <NavBar user={user} logOut={logOut}/>
       <Switch>
-        {/* <Route exact path='/' component={Home}/> */}
-
-        <Route path='/search'>
-          <Form/>
-        </Route> 
-
         <Route path='/signup'>
           <SignUp setUser={setUser}/>
         </Route> 
@@ -75,22 +64,21 @@ function App() {
         </Route> 
 
         <Route path='/profile'>
-          <Profile user={user} setUser={setUser} />
-          {/* {user && ( <Profile {...user} setUser={setUser}/> )} */}
-          {/* <Profile {...user} setUser={setUser}/> */}
+          <Profile {...user}/>
         </Route> 
 
         <Route path='/map'>
-          <Map/>
+          <Map center={center} setCenter={setCenter}/>
         </Route> 
 
-        <Route path='/makereservation'>
+        <Route path='/reservation'>
           <Reservation setUser={setUser} user={user}/>
         </Route> 
 
         <Route path='/search'>
-          <Form />
+          <Search restaurants={restaurants} setRestaurants={setRestaurants} setCenter={setCenter}/>
         </Route> 
+
         <Route path='/map'>
           <Map />
         </Route> 

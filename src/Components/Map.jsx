@@ -1,74 +1,113 @@
-import React, {useState} from 'react';
-import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import React from 'react';
+import { GoogleMap, LoadScript, Marker, useLoadScript } from '@react-google-maps/api';
 
-const containerStyle = {
-    width: '600px',
-    height: '600px'
-  };
+// const containerStyle = {
+//     width: '600px',
+//     height: '600px'
+//   };
    
 //   const center = {
 //     lat: 37.7749,
 //     lng: 122.4194
 //   };
 
-function Map() {
-
-    const [map, setMap] = useState(null)
-    const [center, setCenter] = useState({
-      lat: 37.7749,
-      lng: 122.4194
-    })
-
-    const API_KEY = process.env.REACT_APP_GOOGLE_KEY
-
-    const onLoad = React.useCallback(function callback(map) {
-      const bounds = new window.google.maps.LatLngBounds();
-      map.fitBounds(bounds);
-      setMap(map)
-    }, [])
-   
-    const onUnmount = React.useCallback(function callback(map) {
-      setMap(null)
-    }, [])
-
-    function getLocation() {
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(showPosition);
-    
-        } else {
-          x.innerHTML = "Geolocation is not supported by this browser.";
-        }
-      }
-    
-    
-    let x = document.getElementById("demo");
-    function showPosition(position) {
-
-    setCenter({lat: position.coords.latitude, lng: position.coords.longitude})
-
-    let latlon = position.coords.latitude + "," + position.coords.longitude;
-    
-    let img_url = "https://maps.googleapis.com/maps/api/staticmap?center="+latlon+"&zoom=14&size=400x300&sensor=false&key=API_KEY";
-    
-    // document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
+function Map({center}) {
+  
+    const containerStyle = {
+    height: "400px",
+    width: "800px"
     }
+  
+    // const [center, setCenter] = useState({
+    // lat: 37.7599,
+    // lng: -122.4148
+    // })
+
+  const {isLoaded, loadError} = useLoadScript({
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY
+  })
+
+  const mapRef = React.useRef()
+  const onMapLoad = React.useCallback((map) => {
+    mapRef.current = map
+    // getLocation()
+  }, [])
+
+  if(loadError) return 'Error'
+  if(!isLoaded) return 'Maps'
+
+  // function getLocation() {
+  //   if (navigator.geolocation) {
+  // navigator.geolocation.getCurrentPosition(showPosition);
+  // }
+
+  // function showPosition(position) {
+  //   setCenter({lat: position.coords.latitude, lng: position.coords.longitude})
+  // }
+  
+    // const [map, setMap] = useState(null)
+    // const [center, setCenter] = useState({
+    //   lat: 37.7749,
+    //   lng: 122.4194
+    // })
+
+    // const API_KEY = process.env.REACT_APP_GOOGLE_KEY
+
+    // const onLoad = React.useCallback(function callback(map) {
+    //   const bounds = new window.google.maps.LatLngBounds();
+    //   map.fitBounds(bounds);
+    //   setMap(map)
+    // }, [])
+   
+    // const onUnmount = React.useCallback(function callback(map) {
+    //   setMap(null)
+    // }, [])
+
+    // function getLocation() {
+    //     if (navigator.geolocation) {
+    //       navigator.geolocation.getCurrentPosition(showPosition);
+    
+    //     } else {
+    //       x.innerHTML = "Geolocation is not supported by this browser.";
+    //     }
+    //   }
+    
+    
+    // let x = document.getElementById("demo");
+    // function showPosition(position) {
+
+    // setCenter({lat: position.coords.latitude, lng: position.coords.longitude})
+
+    // let latlon = position.coords.latitude + "," + position.coords.longitude;
+    
+    // let img_url = "https://maps.googleapis.com/maps/api/staticmap?center="+latlon+"&zoom=14&size=400x300&sensor=false&key=API_KEY";
+    
+    // // document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
+    // }
 
     return (
-        <LoadScript
-        googleMapsApiKey={API_KEY}
-        >
-        { getLocation() }
-          <GoogleMap
-            mapContainerStyle={containerStyle}
-            center={center}
-            zoom={2}
-            onLoad={onLoad}
-            onUnmount={onUnmount}
-          >
-            { /* Child components, such as markers, info windows, etc. */ }
-            <></>
-          </GoogleMap>
-        </LoadScript>
+      <GoogleMap
+        mapContainerStyle={containerStyle}
+        center={center}
+        zoom={12}
+        onLoad={onMapLoad}
+      >
+      </GoogleMap>
+        // <LoadScript
+        // googleMapsApiKey={API_KEY}
+        // >
+        // { getLocation() }
+        //   <GoogleMap
+        //     mapContainerStyle={containerStyle}
+        //     center={center}
+        //     zoom={2}
+        //     onLoad={onLoad}
+        //     onUnmount={onUnmount}
+        //   >
+        //     { /* Child components, such as markers, info windows, etc. */ }
+        //     <></>
+        //   </GoogleMap>
+        // </LoadScript>
     );
 }
 // export default React.memo(Map)

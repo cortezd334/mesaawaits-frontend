@@ -8,8 +8,8 @@ export default function NavBar({user, logOut}) {
             <NavLink className='item position' to='/map' >Map</NavLink>
             <NavLink className='item position' to='/search' >Search</NavLink>
             <NavLink className='item position' to='/restaurants' >Restaurants</NavLink>
-            <NavLink className='item position' to='/makereservation' >Make A Reservation</NavLink>
-            {user ? (
+            <NavLink className='item position' to='/reservation' >Make A Reservation</NavLink>
+            {Object.keys(user).length > 1 ? (
                 <>
                     <NavLink className='item position' to='/profile' >Profile</NavLink>
                     <NavLink className='item position' to='/' onClick={logOut}>Log Out</NavLink>

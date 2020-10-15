@@ -26,15 +26,13 @@ const authHeaders = {
 //     }
 //   }
 
-export const search = (body) => {
-    console.log(body)
-    return fetch(`${API}/search`, {
+export async function search(body) {
+    const resp = await fetch(`${API}/search`, {
         method: 'POST',
         headers: headers,
         body: JSON.stringify(body)
     })
-    .then(res => res.json())
-    .then(console.log)
+    return await resp.json()
 }
 
 export async function createUser(data) {
