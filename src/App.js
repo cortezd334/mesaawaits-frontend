@@ -30,10 +30,10 @@ function App() {
   const [user, setUser] = useState({
     user:{}
   })
-  const [center, setCenter] = useState({
-    lat: 37.7599,
-    lng: -122.4148
-  })
+  // const [center, setCenter] = useState({
+  //   lat: 37.7599,
+  //   lng: -122.4148
+  // })
 
   const handleAuthResponse = (resp) => {
     if(resp.user){
@@ -68,7 +68,7 @@ function App() {
         </Route> 
 
         <Route path='/map'>
-          <Map center={center} setCenter={setCenter}/>
+          <Map restaurants={restaurants}/>
         </Route> 
 
         <Route path='/reservation'>
@@ -76,11 +76,7 @@ function App() {
         </Route> 
 
         <Route path='/search'>
-          <Search restaurants={restaurants} setRestaurants={setRestaurants} setCenter={setCenter}/>
-        </Route> 
-
-        <Route path='/map'>
-          <Map />
+          <Search restaurants={restaurants} setRestaurants={setRestaurants}/>
         </Route> 
 
       </Switch>
