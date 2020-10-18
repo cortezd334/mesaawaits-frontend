@@ -15,10 +15,15 @@ export default function MapView({restaurants, center, getLocation}) {
                 return cuisine.title
             })
             return <Card key={restaurant.id}>
-                <h3>{restaurant.name}</h3>
-                <br/>
-                <p>{restaurant.rating} Star Rating</p>
-                <p>{` ${cuisine} `}</p>
+                <div className='imgCon'>
+                    <img className='img' src={restaurant.xximage_url}/>
+                </div>
+                <div>
+                    <h3>{restaurant.name}</h3>
+                    <br/>
+                    <p>{restaurant.rating} Star Rating</p>
+                    <p>{` ${cuisine} `}</p>
+                </div>
             </Card>
         })
     }
