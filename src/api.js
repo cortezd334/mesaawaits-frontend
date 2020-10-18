@@ -35,6 +35,15 @@ export async function search(body) {
     return await resp.json()
 }
 
+export async function geoSearch(body) {
+    const resp = await fetch(`${API}/geoSearch`, {
+        method: 'POST',
+        headers: headers,
+        body: JSON.stringify(body)
+    })
+    return await resp.json()
+}
+
 export async function createUser(data) {
     const resp = await fetch(`${API}/users`, {
         method: 'POST',

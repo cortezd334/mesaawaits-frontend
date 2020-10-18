@@ -5,7 +5,6 @@ export default function NavBar({user, logOut}) {
     return(
         <div className='navbar'>
             <NavLink className='logo' to='/' exact>Logo Will Go Here</NavLink>
-            <NavLink className='item position' to='/map' >Map</NavLink>
             <NavLink className='item position' to='/search' >Search</NavLink>
             <NavLink className='item position' to='/restaurants' >Restaurants</NavLink>
             <NavLink className='item position' to='/reservation' >Make A Reservation</NavLink>
