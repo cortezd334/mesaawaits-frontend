@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
-import { Card } from 'react-bootstrap';
+import Card from 'react-bootstrap/Card';
+import Image from 'react-bootstrap/Image';
 import { geoSearch } from '../api';
 import { Link } from 'react-router-dom'
 
@@ -48,15 +49,36 @@ export default function Restaurant({restaurants, setRestaurants, center, getLoca
         //     //     </Card>
         //     // })
         // } else {
+            // return restaurants.map(restaurant => {
+            //     let cuisine = restaurant.categories.map(cuisine => {
+            //         return cuisine.title
+            //     })
+            //     return <Card key={restaurant.id} style={{ height: '18rem'}}>
+            //         <Card.Img variant='left' src={restaurant.image_url} fluid />
+            //         {/* <Image src={restaurant.image_url} fluid /> */}
+            //             {/* <img className='img' src={restaurant.image_url}/> */}
+            //         <Card.Body>
+            //             <Card.Title>{restaurant.name}</Card.Title>
+            //             <br/>
+            //             <p>{restaurant.rating} Star Rating</p>
+            //             <p>{` ${cuisine} `}</p>
+            //         </Card.Body>
+            //     </Card>
+            // })
             return restaurants.map(restaurant => {
                 let cuisine = restaurant.categories.map(cuisine => {
                     return cuisine.title
                 })
                 return <Card key={restaurant.id}>
-                    <h3>{restaurant.name}</h3>
-                    <br/>
-                    <p>{restaurant.rating} Star Rating</p>
-                    <p>{` ${cuisine} `}</p>
+                    <div className='imgCon'>
+                        <img className='img' src={restaurant.image_url}/>
+                    </div>
+                    <div className='info'>
+                        <h3>{restaurant.name}</h3>
+                        <br/>
+                        <p>{restaurant.rating} Star Rating</p>
+                        <p>{` ${cuisine} `}</p>
+                    </div>
                 </Card>
             })
         // }

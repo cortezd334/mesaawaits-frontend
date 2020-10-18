@@ -1,0 +1,15 @@
+.imgCon {
+    height: 18rem;
+}
+
+.img {
+    max-height: 80%;
+    width: auto;
+    margin: 1rem;
+}
+
+.info {
+    position: relative;
+    left: 20rem;
+    bottom: 13rem;
+}
