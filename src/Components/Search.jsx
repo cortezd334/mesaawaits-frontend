@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { search } from '../api';
 import { useHistory } from 'react-router-dom'
 
-function Search({restaurants, setRestaurants, setCenter}) {
+function Search({restaurants, setRestaurants}) {
 
     const history = useHistory()
 
@@ -20,17 +20,16 @@ function Search({restaurants, setRestaurants, setCenter}) {
     function handleSubmit(e) {
         e.preventDefault()
 
-        // setCenter(form.location)
-        //city name works for yelp but not for google, need lat and long
         search(form)
-        .then(console.log())
         .then(json => {
             setRestaurants(
                 json.businesses
             )
+                localStorage.search = {list: json.businesses}
         })
         history.push('/map')
     }
+
 //unhandled rejection(typeError)
     // latitude: json.coordinates[latitude], longitude: json.coordinates.longitude,
     console.log(restaurants)

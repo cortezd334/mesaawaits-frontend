@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 // import './css/App.css';
-import Map from './Components/Map';
+import MapView from './Components/MapView';
+import Restaurant from './Components/Restaurant';
 import Search from './Components/Search';
 import Profile from './Components/Profile';
 // import { SearchProvider } from './Components/searchContext';
@@ -17,7 +18,16 @@ import { persist } from './api';
 function App() {
 
   const history = useHistory()
-
+  const [restaurants, setRestaurants] = useState([])
+  const [user, setUser] = useState({
+    user:{}
+  })
+  const [center, setCenter] = useState({
+    lat: 37.7599,
+    lng: -122.4148
+  })
+  
+  
   useEffect(() => {
     if(localStorage.token){
       persist()
@@ -25,15 +35,36 @@ function App() {
     }
   }, [])
   //will run again when the dependency changes: maybe put user in []
+  
+  useEffect(() => {
+    getLocation()
+  }, []);
+  //empty it only calls once
+  //center it keeps making calls
 
-  const [restaurants, setRestaurants] = useState([])
-  const [user, setUser] = useState({
-    user:{}
-  })
-  // const [center, setCenter] = useState({
-  //   lat: 37.7599,
-  //   lng: -122.4148
-  // })
+
+    function restMapLocation() {
+    let first = restaurants[0].coordinates
+    const location = {lat: first.latitude, lng: first.longitude}
+    setCenter(location)
+  }
+
+  function showPosition(position) {
+    setCenter({lat: position.coords.latitude, lng: position.coords.longitude})
+  }
+
+  // function getLocation() {
+  //   if(navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition(showPosition)
+  //   }
+  // }
+  function getLocation() {
+    if(restaurants.length > 0) {
+      restMapLocation()
+    } else if(navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition)
+    }
+  }
 
   const handleAuthResponse = (resp) => {
     if(resp.user){
@@ -50,8 +81,10 @@ function App() {
   }
 
   console.log(restaurants)
+
   return (
     <>
+    {/* {getLocation()} being called here causes an infinite loop*/}
     <Router>
       <NavBar user={user} logOut={logOut}/>
       <Switch>
@@ -67,8 +100,12 @@ function App() {
           <Profile {...user}/>
         </Route> 
 
+        <Route path='/restaurants'>
+          <Restaurant restaurants={restaurants} setRestaurants={setRestaurants} center={center} getLocation={getLocation}/>
+        </Route> 
+
         <Route path='/map'>
-          <Map restaurants={restaurants}/>
+          <MapView restaurants={restaurants} center={center} getLocation={getLocation}/>
         </Route> 
 
         <Route path='/reservation'>
