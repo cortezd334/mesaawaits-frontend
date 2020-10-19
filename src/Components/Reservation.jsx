@@ -7,10 +7,11 @@ export default function Reservation({user, setUser}) {
         name: '',
         date: '',
         time: '',
-        partySize: 0,
+        party_size: 0,
         occasion: 'false',
-        notes: ''
-
+        notes: '',
+        restaurant_id: localStorage.currentResId,
+        user_id: localStorage.userId
     }
     const [form, setForm] = useState(newResForm)
 
@@ -37,20 +38,20 @@ export default function Reservation({user, setUser}) {
 
     return(
     <form className='form' onSubmit={handleSubmit}>
-        <label className='item pad stack'> Name:
+        <label className='item pad stack'> Name on Reservation:
             <input type='text' value={form.name} name='name' onChange={handleChange}/>
         </label>
         <br/>
-        <label className='item pad stack'> Date:
-            <input type='text' value={form.date} name='date' onChange={handleChange}/>
+        <label className='event-label item pad stack' for='exampleDate'> Date:
+            <input type='date' id='exampleDate' value={form.date} name='date' onChange={handleChange}/>
         </label>
         <br/>
-        <label className='item pad stack'> Time:
-            <input type='text' value={form.time} name='time' onChange={handleChange}/>
+        <label className='event-label item pad stack' for='eventTime'> Time:
+            <input type='time' id='eventTime' value={form.time} name='time' onChange={handleChange}/>
         </label>
         <br/>
         <label className='item pad stack'> Party Size:
-            <input type='number' value={form.partySize} name='partySize' onChange={handleChange}/>
+            <input type='number' value={form.party_size} name='party_size' onChange={handleChange}/>
         </label>
         <br/>
         <label className='item pad stack'> Special Occasion:
