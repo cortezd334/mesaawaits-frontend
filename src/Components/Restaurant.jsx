@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useRef} from 'react';
 import Card from 'react-bootstrap/Card';
 import Image from 'react-bootstrap/Image';
 import { geoSearch } from '../api';
@@ -7,9 +7,14 @@ import { Link } from 'react-router-dom'
 
 export default function Restaurant({restaurants, setRestaurants, center, getLocation}) {
 
+    const prevCenter = useRef(center)
     useEffect(() => {
+        console.log(prevCenter.current)
+        console.log(center)
+        if( prevCenter.current !== center) {
         loadRest()
-    }, []);
+        }
+    }, [center]);
     //w/ center or empty still loads SFO
     // w/ restaurants correct city but continues to make calls
 
