@@ -69,6 +69,7 @@ function App() {
   const handleAuthResponse = (resp) => {
     if(resp.user){
         localStorage.token = resp.token
+        localStorage.userId = resp.user.id
         setUser({user: resp.user, token: resp.token})
     } else {
       alert(resp.error)

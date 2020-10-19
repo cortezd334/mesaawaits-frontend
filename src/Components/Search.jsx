@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { search } from '../api';
 import { useHistory } from 'react-router-dom'
 
+
 function Search({restaurants, setRestaurants}) {
 
     const history = useHistory()
@@ -25,7 +26,7 @@ function Search({restaurants, setRestaurants}) {
             setRestaurants(
                 json.businesses
             )
-                localStorage.search = {list: json.businesses}
+                // localStorage.search = {list: json.businesses}
         })
         history.push('/map')
     }

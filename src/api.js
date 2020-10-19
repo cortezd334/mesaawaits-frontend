@@ -71,6 +71,15 @@ export async function login(data) {
 //     return await resp.json();
 // }
 
+export async function saveRestaurant(data) {
+    const resp = await fetch(`${API}/restaurants`, {
+        method: 'POST',
+        headers: authHeaders,
+        body: JSON.stringify(data)
+    })
+    return await resp.json();
+}
+
 export async function persist(data) {
     const resp = await fetch(`${API}/persist`, {
         headers: authHeaders
