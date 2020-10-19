@@ -1,12 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { GoogleMap, Marker, useLoadScript, InfoWindow } from '@react-google-maps/api';
 // import utensils_icon from '../images/utensils_icon.png'
 
 function Map({restaurants, center, restMarkers, getLocation}) {
   
+  // useEffect(() => {
+  //   getLocation()
+  // }, []);
+
+  const prevRestaurants = useRef(restaurants)
   useEffect(() => {
-    getLocation()
-  }, []);
+      console.log(prevRestaurants.current)
+      console.log(restaurants)
+      if( prevRestaurants.current !== restaurants) {
+      getLocation()
+      }
+  }, [restaurants]);
+
   //with center it keeps calling (but will show proper map w/ markers)
   //with nothing it doesn't leave geocode (useEffect call on App page) location (markers will only show if rests are in current map city)
 
@@ -24,7 +34,7 @@ function Map({restaurants, center, restMarkers, getLocation}) {
   //   getLocation()
   // }, [restaurants]);
 
-  const [markers, setMarkers] = useState([])
+  // const [markers, setMarkers] = useState([])
   
   const {isLoaded, loadError} = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY
