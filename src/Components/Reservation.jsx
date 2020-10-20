@@ -9,20 +9,20 @@ export default function Reservation({user, setUser}) {
         time: '',
         party_size: 0,
         occasion: 'false',
-        notes: '',
-        restaurant_id: localStorage.currentResId,
-        user_id: localStorage.userId
+        notes: ''
     }
     const [form, setForm] = useState(newResForm)
 
     function handleChange(e) {
         let obj = {[e.target.name]: e.target.value}
-        setForm(prevState => ({...prevState, ...obj}))
+        setForm(prevState => ({...prevState,         restaurant_id: localStorage.currentResId,
+            user_id: localStorage.userId, ...obj}))
     }
 
     function handleSubmit(e) {
         e.preventDefault();
 
+        console.log(localStorage.currentResId)
         fetch(`http://localhost:3000/reservations`, {
         method: 'POST',
         headers: {

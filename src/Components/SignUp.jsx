@@ -9,7 +9,7 @@ function SignUp ( {setUser}) {
         name: '',
         username: '',
         password: '',
-        recovery_password: '' //need to change this, in order to use properly
+        dospassword: ''
     }
 
     const [form, setForm] = useState(signUp)
@@ -25,7 +25,7 @@ function SignUp ( {setUser}) {
         .then(json => {
             if(!json.error){
                 setUser(json)
-                history.push("/profile")
+                history.push("/login")
             } else {
                 alert(json.error)
             }
@@ -45,7 +45,7 @@ function SignUp ( {setUser}) {
             <input type='text' value={form.password} name='password' onChange={handleChange}/>
         </label>
         <label> Re-Enter Password:
-            <input type='text' value={form.recovery_password} name='recovery_password' onChange={handleChange}/>
+            <input type='text' value={form.dospassword} name='dospassword' onChange={handleChange}/>
         </label>
         <input type='submit' value='Submit'/>
     </form>

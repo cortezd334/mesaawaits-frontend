@@ -77,8 +77,8 @@ function App() {
   }
 
   const logOut = () => {
+    // history.push('/')
     localStorage.clear()
-    history.push('/')
   }
 
   console.log(restaurants)

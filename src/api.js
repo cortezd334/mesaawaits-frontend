@@ -26,6 +26,8 @@ const authHeaders = {
 //     }
 //   }
 
+//          Yelp Calls
+
 export async function search(body) {
     const resp = await fetch(`${API}/search`, {
         method: 'POST',
@@ -44,9 +46,20 @@ export async function geoSearch(body) {
     return await resp.json()
 }
 
+//          User Calls
+
 export async function createUser(data) {
     const resp = await fetch(`${API}/users`, {
         method: 'POST',
+        headers: headers,
+        body: JSON.stringify(data)
+    })
+    return await resp.json()
+}
+
+export async function updateUser(user, data) {
+    const resp = await fetch(`${API}/users/${user.id}`, {
+        method: 'PATCH',
         headers: headers,
         body: JSON.stringify(data)
     })
@@ -62,6 +75,13 @@ export async function login(data) {
     return await resp.json();
 }
 
+export async function persist(data) {
+    const resp = await fetch(`${API}/persist`, {
+        headers: authHeaders
+    })
+    return await resp.json();
+}
+
 // export async function newRes(data) {
 //     const resp = await fetch(`${API}/reservations`, {
 //         method: 'POST',
@@ -71,7 +91,10 @@ export async function login(data) {
 //     return await resp.json();
 // }
 
+//          Restaurant Calls
+
 export async function saveRestaurant(data) {
+    console.log(data)
     const resp = await fetch(`${API}/restaurants`, {
         method: 'POST',
         headers: authHeaders,
@@ -80,9 +103,4 @@ export async function saveRestaurant(data) {
     return await resp.json();
 }
 
-export async function persist(data) {
-    const resp = await fetch(`${API}/persist`, {
-        headers: authHeaders
-    })
-    return await resp.json();
-}
+
