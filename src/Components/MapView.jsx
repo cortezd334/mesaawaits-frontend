@@ -52,7 +52,8 @@ export default function MapView({restaurants, center, getLocation}) {
         }
         saveRestaurant(info)
         .then(json => {
-            localStorage.currentResId = json.id
+            localStorage.setItem('currentResId', json.id) 
+            console.log(localStorage.currentResId)        
         })
         history.push('/reservation')
     }
