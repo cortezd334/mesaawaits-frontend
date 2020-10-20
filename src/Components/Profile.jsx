@@ -45,6 +45,7 @@ function Profile({user}) {
         e.preventDefault()
 
         updateUser(user, form)
+        .then(console.log)
     }
 
     return(
