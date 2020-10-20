@@ -18,7 +18,7 @@ export default function MapView({restaurants, center, getLocation}) {
             let cuisine = restaurant.categories.map(cuisine => {
                 return cuisine.title
             })
-            return <Card key={restaurant.id} onClick={() => clickHandler(restaurant)}>
+            return <Card key={restaurant.id}>
                 <div className='imgCon'>
                     <img className='img' src={restaurant.image_url} alt='Restaurant'/>
                 </div>
@@ -29,11 +29,12 @@ export default function MapView({restaurants, center, getLocation}) {
                     <p>{` ${cuisine} `}</p>
                 </div>
                 <div>
-                <Button variant="primary">Make Reservation</Button>
+                <Button variant="primary" onClick={() => clickHandler(restaurant)}>Make Reservation</Button>
                 </div>
             </Card>
         })
     }
+    //handleClick was originally on card and worked but when changed to button stopped working yay!
 
     function clickHandler(rest) {
         console.log(rest)

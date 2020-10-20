@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Card from 'react-bootstrap/Card';
-import { updateUser } from '../api';
+import Button from 'react-bootstrap/Button';
+import { updateUser, deleteRes } from '../api';
 
 function Profile({user}) {
 
@@ -31,8 +32,13 @@ function Profile({user}) {
                 <br/>
                 <p>{res.date}</p>
                 <p>{res.party_size}</p>
+                <Button variant="primary" onClick={() => handleClick(res)}>Delete Reservation</Button>
             </Card>
         })
+    }
+
+    function handleClick(res) {
+        deleteRes(res)
     }
 
     function submitHandler(e) {

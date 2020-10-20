@@ -82,14 +82,6 @@ export async function persist(data) {
     return await resp.json();
 }
 
-// export async function newRes(data) {
-//     const resp = await fetch(`${API}/reservations`, {
-//         method: 'POST',
-//         headers: authHeaders,
-//         body: JSON.stringify(data)
-//     })
-//     return await resp.json();
-// }
 
 //          Restaurant Calls
 
@@ -103,4 +95,22 @@ export async function saveRestaurant(data) {
     return await resp.json();
 }
 
+//          Reservation Calls
 
+
+export async function deleteRes(data) {
+    const resp = await fetch(`${API}/reservations/${data.id}`, {
+        method: 'DELETE',
+        // headers: headers,
+    })
+    // return await resp.json();
+}
+
+// export async function newRes(data) {
+//     const resp = await fetch(`${API}/reservations`, {
+//         method: 'POST',
+//         headers: authHeaders,
+//         body: JSON.stringify(data)
+//     })
+//     return await resp.json();
+// }
