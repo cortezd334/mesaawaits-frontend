@@ -60,7 +60,7 @@ export async function createUser(data) {
 export async function updateUser(user, data) {
     const resp = await fetch(`${API}/users/${user.id}`, {
         method: 'PATCH',
-        headers: headers,
+        headers: authHeaders,
         body: JSON.stringify(data)
     })
     return await resp.json()
@@ -114,3 +114,18 @@ export async function deleteRes(data) {
 //     })
 //     return await resp.json();
 // }
+
+
+//          Favorite Calls
+
+export async function addFavorite(data) {
+    console.log(data)
+    const resp = await fetch(`${API}/favorites`, {
+        method: 'POST',
+        headers: authHeaders,
+        body: JSON.stringify(data)
+    })
+    return await resp.json();
+}
+
+//all authHeaders except signup(create user) login and yelp searches

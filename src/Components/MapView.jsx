@@ -2,8 +2,9 @@ import React from 'react';
 import { useHistory } from 'react-router-dom'
 import Map from './Map'
 import { Marker } from '@react-google-maps/api';
-import { saveRestaurant } from '../api';
+import { saveRestaurant, addFavorite } from '../api';
 import utensils_icon from '../images/utensils_icon.png'
+import new_heart from '../images/new_heart.png'
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 
@@ -31,10 +32,13 @@ export default function MapView({restaurants, center, getLocation}) {
                 <div>
                 <Button variant="primary" onClick={() => clickHandler(restaurant)}>Make Reservation</Button>
                 </div>
+                <div>
+                    {/* turnary where if restaurant belongs to favs different image  */}
+                <img className='icon' src={new_heart} alt='New Heart' onClick={() => handleAdd(restaurant)}/>
+                </div>
             </Card>
         })
     }
-    //handleClick was originally on card and worked but when changed to button stopped working yay!
 
     function clickHandler(rest) {
         console.log(rest)
@@ -51,12 +55,34 @@ export default function MapView({restaurants, center, getLocation}) {
             longitude: rest.coordinates.longitude,
             image: rest.image_url
         }
+
         saveRestaurant(info)
         .then(json => {
             localStorage.setItem('currentResId', json.id) 
+            console.log(json)
             console.log(localStorage.currentResId)        
         })
+        .then(console.log)
         history.push('/reservation')
+    }
+
+    function handleAdd(rest) {
+
+        let cuisine = rest.categories.map(cuisine => {
+            return cuisine.title
+        })
+
+        const info = {
+            name: rest.name,
+            cuisine: {cuisine},
+            rating: rest.rating,
+            latitude: rest.coordinates.latitude,
+            longitude: rest.coordinates.longitude,
+            image: rest.image_url
+        }
+
+        addFavorite(info)
+        .then(console.log)
     }
 
     function restMarkers() {

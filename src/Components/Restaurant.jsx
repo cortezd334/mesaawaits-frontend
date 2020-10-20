@@ -1,12 +1,15 @@
 import React, {useEffect, useRef} from 'react';
 import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
 import Image from 'react-bootstrap/Image';
-import { geoSearch } from '../api';
-import { Link } from 'react-router-dom'
+import { geoSearch, saveRestaurant } from '../api';
+import { Link, useHistory } from 'react-router-dom'
 
 
 export default function Restaurant({restaurants, setRestaurants, center, getLocation}) {
 
+    const history = useHistory()
+    
     const prevCenter = useRef(center)
     useEffect(() => {
         console.log(prevCenter.current)
@@ -84,9 +87,37 @@ export default function Restaurant({restaurants, setRestaurants, center, getLoca
                         <p>{restaurant.rating} Star Rating</p>
                         <p>{` ${cuisine} `}</p>
                     </div>
+                    <div>
+                        <Button variant="primary" onClick={() => clickHandler(restaurant)}>Make Reservation</Button>
+                    </div>
                 </Card>
             })
         // }
+    }
+
+    function clickHandler(rest) {
+        console.log(rest)
+
+        let cuisine = rest.categories.map(cuisine => {
+            return cuisine.title
+        })
+
+        const info = {
+            name: rest.name,
+            cuisine: {cuisine},
+            rating: rest.rating,
+            latitude: rest.coordinates.latitude,
+            longitude: rest.coordinates.longitude,
+            image: rest.image_url
+        }
+        saveRestaurant(info)
+        .then(json => {
+            localStorage.setItem('currentResId', json.id) 
+            console.log(json)
+            console.log(localStorage.currentResId)        
+        })
+        .then(console.log)
+        history.push('/reservation')
     }
 
     return(
