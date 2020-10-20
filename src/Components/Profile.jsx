@@ -15,7 +15,6 @@ function Profile({user}) {
     useEffect(() => {
         if( prevUser.current !== user ) {
             setForm(userForm)
-            // viewReservations()
         }
     }, [user]);
     
@@ -35,15 +34,13 @@ function Profile({user}) {
             </Card>
         })
     }
-    //can not view res cuz when loaded user doesn't exist, have to wait for it to update
-    //is there a work around?
+
     function submitHandler(e) {
         e.preventDefault()
-        console.log(user)
-        console.log(form)
+
         updateUser(user, form)
-        .then(console.log)
     }
+
     return(
         <div>
             <h1>Welcome {user.username}!</h1>
