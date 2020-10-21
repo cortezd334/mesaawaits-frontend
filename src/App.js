@@ -23,10 +23,13 @@ function App() {
   const history = useHistory()
   const [restaurants, setRestaurants] = useState([])
   const [userFavs, setUserFavs] = useState([])
+  const [reso, setReso] = useState({})
   const [user, setUser] = useState({
     user:{}
   })
 
+  console.log(user)
+  
   //handleRemove
   // setUser(updated check reso filter (value vs all))
   const [center, setCenter] = useState({
@@ -89,8 +92,6 @@ function App() {
     localStorage.clear()
   }
 
-  console.log(restaurants)
-
   return (
     <>
     {/* {getLocation()} being called here causes an infinite loop*/}
@@ -106,11 +107,11 @@ function App() {
         </Route> 
 
         <Route path='/profile'>
-          <Profile {...user}/>
+          <Profile {...user} setUser={setUser}/>
         </Route> 
 
         <Route path='/restaurants'>
-          <Restaurant restaurants={restaurants} setRestaurants={setRestaurants} center={center} getLocation={getLocation}/>
+          <Restaurant restaurants={restaurants} setRestaurants={setRestaurants} center={center} getLocation={getLocation} setUserFavs={setUserFavs}/>
         </Route> 
 
         <Route path='/map'>
@@ -118,11 +119,11 @@ function App() {
         </Route> 
 
         <Route path='/reservation'>
-          <Reservation setUser={setUser} user={user}  userFavs={userFavs} setUserFavs={setUserFavs}/>
+          <Reservation setUser={setUser} user={user} setReso={setReso} />
         </Route> 
 
         <Route path='/confirmation'>
-          <ResoConfirmation {...user}/>
+          <ResoConfirmation {...user} reso={reso}/>
         </Route> 
 
         <Route path='/search'>
@@ -130,7 +131,7 @@ function App() {
         </Route> 
 
         <Route path='/myreservations'>
-          <Reso {...user}/>
+          <Reso {...user} setUser={setUser}/>
         </Route> 
 
         <Route path='/favorites'>

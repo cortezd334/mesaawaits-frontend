@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import ResoConfirmation from './ResoConfirmation';
 // import { newRes } from '../api';
 
-export default function Reservation({user, setUser}) {
+export default function Reservation({user, setUser, setReso}) {
     
     const newResForm = {
         name: '',
@@ -37,12 +37,10 @@ export default function Reservation({user, setUser}) {
         })
         .then(res => res.json())
         .then(json => {
+            setReso(json)
+            console.log(user)
+            setUser(prevUser => ({...prevUser, user:{ ...prevUser.user, reservations: [...prevUser.user.reservations, json]}}))
             history.push('/confirmation')
-            //want to send this specific reso to ResoConfirmation 
-            //by passing user I can filter user.reservation matching name
-            //is there a way to pass it from here?
-            
-            // <ResoConfirmation reso={json}/>
         })
     }
 

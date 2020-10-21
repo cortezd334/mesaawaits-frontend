@@ -3,8 +3,14 @@ import { Link, useHistory } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import { deleteRes } from '../api';
+import { useEffect } from 'react';
 
-export default function Reso({user}) {
+export default function Reso({user, setUser}) {
+
+    // const prevRestaurants = useRef(restaurants)
+    // useEffect(() => {
+    //     viewReservations()
+    // }, [user.reservations])
 
     function viewReservations() {
         console.log(user.reservations)
@@ -21,6 +27,9 @@ export default function Reso({user}) {
 
     function handleClick(res) {
         deleteRes(res)
+        const filRes = user.reservations.filter(restaurant => restaurant.id !== res.id)
+        console.log(filRes)
+        setUser(prevUser => ({...prevUser, user:{ ...prevUser.user, reservations: filRes}}))
     }
     return(
         <>
