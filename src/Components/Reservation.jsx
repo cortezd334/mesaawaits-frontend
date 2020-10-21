@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useHistory } from "react-router-dom";
+import ResoConfirmation from './ResoConfirmation';
 // import { newRes } from '../api';
 
 export default function Reservation({user, setUser}) {
@@ -11,6 +13,8 @@ export default function Reservation({user, setUser}) {
         occasion: 'false',
         notes: ''
     }
+
+    const history = useHistory()
     const [form, setForm] = useState(newResForm)
 
     function handleChange(e) {
@@ -32,7 +36,14 @@ export default function Reservation({user, setUser}) {
         body: JSON.stringify(form)
         })
         .then(res => res.json())
-        .then(console.log)
+        .then(json => {
+            history.push('/confirmation')
+            //want to send this specific reso to ResoConfirmation 
+            //by passing user I can filter user.reservation matching name
+            //is there a way to pass it from here?
+            
+            // <ResoConfirmation reso={json}/>
+        })
     }
 
 

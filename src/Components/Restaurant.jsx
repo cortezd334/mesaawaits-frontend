@@ -2,11 +2,12 @@ import React, {useEffect, useRef} from 'react';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Image from 'react-bootstrap/Image';
-import { geoSearch, saveRestaurant } from '../api';
+import new_heart from '../images/new_heart.png'
+import { geoSearch, saveRestaurant, addFavorite } from '../api';
 import { Link, useHistory } from 'react-router-dom'
 
 
-export default function Restaurant({restaurants, setRestaurants, center, getLocation}) {
+export default function Restaurant({restaurants, setRestaurants, center, userFavs, setUserFavs}) {
 
     const history = useHistory()
     
@@ -90,6 +91,10 @@ export default function Restaurant({restaurants, setRestaurants, center, getLoca
                     <div>
                         <Button variant="primary" onClick={() => clickHandler(restaurant)}>Make Reservation</Button>
                     </div>
+                    <div>
+                        {/* turnary where if restaurant belongs to favs different image  */}
+                        <img className='icon' src={new_heart} alt='New Heart' onClick={() => handleAdd(restaurant)}/>
+                    </div>
                 </Card>
             })
         // }
@@ -118,6 +123,25 @@ export default function Restaurant({restaurants, setRestaurants, center, getLoca
         })
         .then(console.log)
         history.push('/reservation')
+    }
+
+    function handleAdd(rest) {
+
+        let cuisine = rest.categories.map(cuisine => {
+            return cuisine.title
+        })
+
+        const info = {
+            name: rest.name,
+            cuisine: {cuisine},
+            rating: rest.rating,
+            latitude: rest.coordinates.latitude,
+            longitude: rest.coordinates.longitude,
+            image: rest.image_url
+        }
+
+        addFavorite(info)
+        .then(console.log)
     }
 
     return(
