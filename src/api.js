@@ -67,12 +67,13 @@ export async function updateUser(user, data) {
 }
 
 export async function deleteUser(data) {
-    const resp = await fetch(`${API}/reservations/${data.id}`, {
+    const resp = await fetch(`${API}/users/${data.id}`, {
         method: 'DELETE',
-        // headers: headers,
+        headers: authHeaders,
     })
-    // return await resp.json();
+    return await resp.json();
 }
+//fix this
 
 export async function login(data) {
     const resp = await fetch(`${API}/login`, {

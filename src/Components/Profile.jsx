@@ -42,20 +42,10 @@ function Profile({user, setUser}) {
     }
 
     function deleteAccount() {
-        if(user.reservations){
-            user.reservations.map(reso => {
-                deleteRes(reso)
-            })
-            setUser({})
-            localStorage.clear()
-            deleteUser(user)
-            history.push('/')
-        } else {
-            setUser({})
-            localStorage.clear()
-            deleteUser(user)
-            history.push('/')
-        }
+        deleteUser(user)
+        localStorage.clear()
+        history.push('/')
+        setUser({})
     }
 
     return(

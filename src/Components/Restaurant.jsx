@@ -141,7 +141,7 @@ export default function Restaurant({restaurants, setRestaurants, center, userFav
         }
 
         addFavorite(info)
-        .then(console.log)
+        .then(json => setUserFavs(prevState => ({...prevState, ...json})))
     }
 
     return(

@@ -15,5 +15,10 @@
 }
 
 .icon {
-    height: 20%;
+    height: 40px;
+    color: red;
+}
+
+.icon:hover {
+    fill: red
 }
