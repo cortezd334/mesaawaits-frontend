@@ -66,6 +66,14 @@ export async function updateUser(user, data) {
     return await resp.json()
 }
 
+export async function deleteUser(data) {
+    const resp = await fetch(`${API}/reservations/${data.id}`, {
+        method: 'DELETE',
+        // headers: headers,
+    })
+    // return await resp.json();
+}
+
 export async function login(data) {
     const resp = await fetch(`${API}/login`, {
         method: 'POST',
@@ -128,4 +136,10 @@ export async function addFavorite(data) {
     return await resp.json();
 }
 
+export async function getFav() {
+    const resp = await fetch(`${API}/favorites`, {
+        headers: authHeaders
+    })
+    return await resp.json();
+}
 //all authHeaders except signup(create user) login and yelp searches

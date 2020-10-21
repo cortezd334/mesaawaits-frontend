@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-import { updateUser, deleteRes } from '../api';
+import Modal from 'react-bootstrap/Modal';
+import { updateUser, deleteRes, deleteUser } from '../api';
 
-function Profile({user}) {
+function Profile({user, setUser}) {
 
     const userForm = {
         name: user.name,
@@ -19,26 +21,17 @@ function Profile({user}) {
         }
     }, [user]);
     
+    const history = useHistory()
+
     const [form, setForm] = useState(userForm)
+    const [show, setShow] = useState(false)
+
+    const handleClose = () => setShow(false)
+    const handleShow = () => setShow(true)
+
     function handleChange(e) {
         let obj = {[e.target.name]: e.target.value}
         setForm(prevState => ({...prevState, ...obj}))
-    }
-
-    function viewReservations() {
-        return user.reservations.map(res => {
-            return <Card key={res.id}>
-                <h3>{res.restaurant.name}</h3>
-                <br/>
-                <p>{res.date}</p>
-                <p>{res.party_size}</p>
-                <Button variant="primary" onClick={() => handleClick(res)}>Delete Reservation</Button>
-            </Card>
-        })
-    }
-
-    function handleClick(res) {
-        deleteRes(res)
     }
 
     function submitHandler(e) {
@@ -46,6 +39,23 @@ function Profile({user}) {
 
         updateUser(user, form)
         .then(console.log)
+    }
+
+    function deleteAccount() {
+        if(user.reservations){
+            user.reservations.map(reso => {
+                deleteRes(reso)
+            })
+            setUser({})
+            localStorage.clear()
+            deleteUser(user)
+            history.push('/')
+        } else {
+            setUser({})
+            localStorage.clear()
+            deleteUser(user)
+            history.push('/')
+        }
     }
 
     return(
@@ -69,10 +79,26 @@ function Profile({user}) {
                     <input type='text' value={form.email} name='email' onChange={handleChange}/>
                 </label>
                 <br/>
-                <input type='submit' value='Submit'/>
+                <input type='submit' value='Update'/>
             </form>
-            <h4> Upcoming Reservations</h4>
-            {user && viewReservations()}
+
+            <Button variant='primary' onClick={handleShow}>Delete Account</Button>
+
+            <Link to='/myreservations'>View Upcoming Reservations</Link>
+            <Link to='/favorites'>View Favorite Restaurants</Link>
+
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>Delete Your Account?
+                </Modal.Header>
+                <Modal.Body>
+                    <p>Are you sure you want to delete your account? Once deleted all future reservations will also be deleted.</p>
+                </Modal.Body>
+
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose, deleteAccount}>Delete Account</Button>
+                    <Button variant="primary" onClick={handleClose}>Take Me Back</Button>
+                </Modal.Footer>
+            </Modal>
         </div>
     )
 }

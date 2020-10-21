@@ -4,12 +4,15 @@ import MapView from './Components/MapView';
 import Restaurant from './Components/Restaurant';
 import Search from './Components/Search';
 import Profile from './Components/Profile';
-// import { SearchProvider } from './Components/searchContext';
 import SignUp from './Components/SignUp';
 import LogIn from './Components/LogIn';
 import NavBar from './Components/NavBar';
-import { BrowserRouter as Router, Switch, Route, useHistory } from "react-router-dom";
+import Reso from './Components/Reso';
+import ResoConfirmation from './Components/ResoConfirmation';
+import Favorite from './Components/Favorite';
 import Reservation from './Components/Reservation';
+// import { SearchProvider } from './Components/searchContext';
+import { BrowserRouter as Router, Switch, Route, useHistory } from "react-router-dom";
 import { persist } from './api';
 
 
@@ -19,9 +22,13 @@ function App() {
 
   const history = useHistory()
   const [restaurants, setRestaurants] = useState([])
+  const [userFavs, setUserFavs] = useState([])
   const [user, setUser] = useState({
     user:{}
   })
+
+  //handleRemove
+  // setUser(updated check reso filter (value vs all))
   const [center, setCenter] = useState({
     lat: 37.7599,
     lng: -122.4148
@@ -78,6 +85,7 @@ function App() {
 
   const logOut = () => {
     // history.push('/')
+    setUser({})
     localStorage.clear()
   }
 
@@ -106,15 +114,27 @@ function App() {
         </Route> 
 
         <Route path='/map'>
-          <MapView restaurants={restaurants} center={center} getLocation={getLocation}/>
+          <MapView restaurants={restaurants} center={center} getLocation={getLocation} userFavs={userFavs} setUserFavs={setUserFavs}/>
         </Route> 
 
         <Route path='/reservation'>
-          <Reservation setUser={setUser} user={user}/>
+          <Reservation setUser={setUser} user={user}  userFavs={userFavs} setUserFavs={setUserFavs}/>
+        </Route> 
+
+        <Route path='/confirmation'>
+          <ResoConfirmation {...user}/>
         </Route> 
 
         <Route path='/search'>
           <Search restaurants={restaurants} setRestaurants={setRestaurants}/>
+        </Route> 
+
+        <Route path='/myreservations'>
+          <Reso {...user}/>
+        </Route> 
+
+        <Route path='/favorites'>
+          <Favorite {...user}/>
         </Route> 
 
       </Switch>

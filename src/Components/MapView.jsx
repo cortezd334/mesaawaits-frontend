@@ -10,7 +10,7 @@ import Button from 'react-bootstrap/Button';
 
 // import Restaurant from './Restaurant';
 
-export default function MapView({restaurants, center, getLocation}) {
+export default function MapView({restaurants, center, getLocation, userFavs, setUserFavs}) {
     
     const history = useHistory()
 
@@ -34,7 +34,8 @@ export default function MapView({restaurants, center, getLocation}) {
                 </div>
                 <div>
                     {/* turnary where if restaurant belongs to favs different image  */}
-                <img className='icon' src={new_heart} alt='New Heart' onClick={() => handleAdd(restaurant)}/>
+                    {/* {userFavs.includes(restaurant.name) ? } */}
+                    <img className='icon' src={new_heart} alt='New Heart' onClick={() => handleAdd(restaurant)}/>
                 </div>
             </Card>
         })
@@ -82,7 +83,7 @@ export default function MapView({restaurants, center, getLocation}) {
         }
 
         addFavorite(info)
-        .then(console.log)
+        .then(json => setUserFavs(prevState => ({...prevState, ...json})))
     }
 
     function restMarkers() {
