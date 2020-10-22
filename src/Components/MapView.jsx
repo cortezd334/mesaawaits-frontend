@@ -85,7 +85,9 @@ export default function MapView({restaurants, center, getLocation, user, setUser
         }
 
         addFavorite(info)
-        .then(console.log)
+        .then(json => {
+            setUser(prevUser => ({...prevUser, user:{ ...prevUser.user, favorites: [...prevUser.user.favorites, json]}}))
+        })
     }
 
     function handleDelete(rest) {

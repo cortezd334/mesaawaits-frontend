@@ -144,15 +144,16 @@ export default function Restaurant({restaurants, setRestaurants, center, user, s
         }
 
         addFavorite(info)
-        .then(console.log)
-
-        // addFavorite(info)
-        // .then(json => setUserFavs(prevState => ({...prevState, ...json})))
+        .then(json => {
+            setUser(prevUser => ({...prevUser, user:{ ...prevUser.user, favorites: [...prevUser.user.favorites, json]}}))
+        })
     }
 
     function handleDelete(rest) {
         const data = user.favorites.filter(favorite => favorite.restaurant.name === rest.name)
         delFavorite(data[0])
+        const fav = user.favorites.filter(favorite => favorite.restaurant.name !== rest.name)
+        setUser(prevUser => ({...prevUser, user:{ ...prevUser.user, favorites: fav}}))
     }
 
     return(
