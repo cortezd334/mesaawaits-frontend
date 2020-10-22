@@ -15,13 +15,15 @@ export default function Reso({user, setUser}) {
     function viewReservations() {
         console.log(user.reservations)
         return user.reservations.map(res => {
-            // const dateToFormat = res.date
-            return <Card key={res.id}>
-                <h3>{res.restaurant.name}</h3>
-                <br/>
-                {/* <Moment>{dateToFormat}</Moment> */}
-                <p>{res.party_size}</p>
-                <Button variant="primary" onClick={() => handleClick(res)}>Delete Reservation</Button>
+            return <Card key={res.id} style={{ width: '20rem' }}>
+                <Card.Body>
+                    <Card.Title>{res.restaurant.name}</Card.Title>
+                    <Card.Text>
+                        {res.date} at {res.time}<br/>
+                        Party of {res.party_size}
+                    </Card.Text>
+                    <Button variant="primary" onClick={() => handleClick(res)}>Delete Reservation</Button>
+                </Card.Body>
             </Card>
         })
     }
