@@ -51,7 +51,7 @@ export default function Restaurant({restaurants, setRestaurants, center, user, s
                     <p>{restaurant.rating} Star Rating</p>
                     <p>{` ${cuisine.join(', ')} `}</p>
                     <div>
-                        <Button variant="primary" onClick={() => clickHandler(restaurant)}>Make Reservation</Button>
+                        <Button variant="outline-info" onClick={() => clickHandler(restaurant)}>Make Reservation</Button>
                         {user.favorites.map(favorite => 
                             favorite.restaurant.name).includes(restaurant.name) ? 
                         <img className='icon' src={red_heart} alt='Fav Heart' onClick={() => handleDelete(restaurant)}/> :

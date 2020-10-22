@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { search } from '../api';
 import { useHistory } from 'react-router-dom'
+import Button from 'react-bootstrap/Button';
 
 
 function Search({restaurants, setRestaurants}) {
@@ -42,7 +43,8 @@ function Search({restaurants, setRestaurants}) {
             <label className='item pad'> Location:
                 <input type='text' value={form.location} name='location' onChange={handleChange}/>
             </label>
-            <input type='submit' value='Submit'/>
+            {/* <input type='submit' value='Submit'/> */}
+            <Button type='submit' variant="outline-info">Submit</Button>
         </form>
     )
 }

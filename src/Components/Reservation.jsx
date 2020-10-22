@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from "react-router-dom";
 import ResoConfirmation from './ResoConfirmation';
+import Button from 'react-bootstrap/Button';
 // import { newRes } from '../api';
 
 export default function Reservation({user, setUser, setReso}) {
@@ -79,7 +80,8 @@ export default function Reservation({user, setUser, setReso}) {
             <textarea value={form.notes} name='notes' onChange={handleChange}/>
         </label>
         <br/>
-        <input type='submit' value='Submit'/>
+        {/* <input type='submit' value='Submit'/> */}
+        <Button type='submit' variant="outline-info">Submit</Button>
     </form>
     )
 }
