@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 // import './css/App.css';
 import MapView from './Components/MapView';
 import Restaurant from './Components/Restaurant';
+import LandingPage from './Components/LandingPage';
 import Search from './Components/Search';
 import Profile from './Components/Profile';
 import SignUp from './Components/SignUp';
@@ -15,9 +16,6 @@ import Calendar from './Components/Calendar';
 // import { SearchProvider } from './Components/searchContext';
 import { BrowserRouter as Router, Switch, Route, useHistory } from "react-router-dom";
 import { persist, getFav } from './api';
-
-
-
 
 function App() {
 
@@ -84,7 +82,6 @@ function App() {
   }
 
   const logOut = () => {
-    // history.push('/')
     setUser({})
     localStorage.clear()
   }
@@ -95,6 +92,10 @@ function App() {
     <Router>
       <NavBar user={user} logOut={logOut}/>
       <Switch>
+        <Route exact path='/'>
+          <LandingPage setUser={setUser}/>
+        </Route> 
+
         <Route path='/signup'>
           <SignUp setUser={setUser}/>
         </Route> 
@@ -142,7 +143,6 @@ function App() {
 
       </Switch>
     </Router>
-    <p>Your preferred page to book all your restaurant reservations</p>
     </div>
   );
 }

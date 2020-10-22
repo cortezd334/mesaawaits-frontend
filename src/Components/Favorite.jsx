@@ -16,7 +16,7 @@ export default function Reso({user, setUser}) {
                         {fav.cuisine}<br/>
                         {fav.rating} Star Rating
                     </Card.Text>
-                    <Button variant="primary" onClick={() => handleDelete(fav)}>Remove From Favorites</Button>
+                    <Button variant="outline-info" onClick={() => handleDelete(fav)}>Remove From Favorites</Button>
                 </Card.Body>
             </Card>
         })

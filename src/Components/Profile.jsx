@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { updateUser, deleteRes, deleteUser } from '../api';
+import { updateUser, deleteUser } from '../api';
 
 function Profile({user, setUser}) {
 
@@ -25,9 +24,13 @@ function Profile({user, setUser}) {
 
     const [form, setForm] = useState(userForm)
     const [show, setShow] = useState(false)
+    const [updateShow, setUpdateShow] = useState(false)
 
     const handleClose = () => setShow(false)
     const handleShow = () => setShow(true)
+
+    const handleUpdateClose = () => setUpdateShow(false)
+    const handleUpdateShow = () => setUpdateShow(true)
 
     function handleChange(e) {
         let obj = {[e.target.name]: e.target.value}
@@ -69,10 +72,10 @@ function Profile({user, setUser}) {
                     <input type='text' value={form.email} name='email' onChange={handleChange}/>
                 </label>
                 <br/>
-                <input type='submit' value='Update'/>
+                <Button type='submit' variant="outline-info" onClick={handleUpdateShow}>Update</Button>
             </form>
 
-            <Button variant='primary' onClick={handleShow}>Delete Account</Button>
+            <Button variant="outline-info" onClick={handleShow}>Delete Account</Button>
 
             <Link to='/myreservations'>View Upcoming Reservations</Link>
             <Link to='/favorites'>View Favorite Restaurants</Link>
@@ -85,8 +88,20 @@ function Profile({user, setUser}) {
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose, deleteAccount}>Delete Account</Button>
-                    <Button variant="primary" onClick={handleClose}>Take Me Back</Button>
+                    <Button variant="outline-dark" onClick={handleClose, deleteAccount}>Delete Account</Button>
+                    <Button variant="outline-info"  onClick={handleClose}>Take Me Back</Button>
+                </Modal.Footer>
+            </Modal>
+
+            <Modal show={updateShow} onHide={handleUpdateClose}>
+                <Modal.Header closeButton>
+                </Modal.Header>
+                <Modal.Body>
+                    <p>Your Account Has Been Updated</p>
+                </Modal.Body>
+
+                <Modal.Footer>
+                    <Button variant="outline-info"  onClick={handleUpdateClose}>Close</Button>
                 </Modal.Footer>
             </Modal>
         </div>

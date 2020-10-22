@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { login } from '../api';
 import { useHistory } from "react-router-dom";
+import Button from 'react-bootstrap/Button';
 
 function LogIn({ user, setUser, handleAuthResp}) {
     const history = useHistory();
@@ -31,15 +32,19 @@ function LogIn({ user, setUser, handleAuthResp}) {
     }
 
     return(
-    <form onSubmit={handleSubmit}>
-        <label> Username:
-            <input type='text' value={form.username} name='username' onChange={handleChange}/>
-        </label>
-        <label> Password:
-            <input type='text' value={form.password} name='password' onChange={handleChange}/>
-        </label>
-        <input type='submit' value='Submit'/>
-    </form>
+        <div>
+            Welcome Back! Please sign in
+            <form onSubmit={handleSubmit}>
+                <label> Username:
+                    <input type='text' value={form.username} name='username' onChange={handleChange}/>
+                </label>
+                <label> Password:
+                    <input type='text' value={form.password} name='password' onChange={handleChange}/>
+                </label>
+                {/* <input type='submit' value='Submit'/> */}
+                <Button type='submit' variant="outline-info">Submit</Button>
+            </form>
+        </div>
     )
 }
 

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { createUser } from '../api';
 import { useHistory } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
 
 function SignUp ( {setUser}) {
 
@@ -47,7 +48,8 @@ function SignUp ( {setUser}) {
         <label> Re-Enter Password:
             <input type='text' value={form.dospassword} name='dospassword' onChange={handleChange}/>
         </label>
-        <input type='submit' value='Submit'/>
+        {/* <input type='submit' value='Submit'/> */}
+        <Button type='submit' variant="outline-info">Submit</Button>
     </form>
     )
 }
