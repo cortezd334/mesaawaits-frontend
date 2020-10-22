@@ -11,6 +11,7 @@ import Reso from './Components/Reso';
 import ResoConfirmation from './Components/ResoConfirmation';
 import Favorite from './Components/Favorite';
 import Reservation from './Components/Reservation';
+import Calendar from './Components/Calendar';
 // import { SearchProvider } from './Components/searchContext';
 import { BrowserRouter as Router, Switch, Route, useHistory } from "react-router-dom";
 import { persist, getFav } from './api';
@@ -89,7 +90,7 @@ function App() {
   }
 
   return (
-    <>
+    <div className='app'>
     {/* {getLocation()} being called here causes an infinite loop*/}
     <Router>
       <NavBar user={user} logOut={logOut}/>
@@ -134,12 +135,15 @@ function App() {
           <Favorite {...user} setUser={setUser}/>
         </Route> 
 
+        {/* for coding purposes */}
+        <Route path='/calendar'>
+          <Calendar {...user} setUser={setUser}/>
+        </Route> 
+
       </Switch>
     </Router>
-    {/* <SearchProvider value='ComponentWeWantShare'> */}
-
-    {/* </SearchProvider> */}
-    </>
+    <p>Your preferred page to book all your restaurant reservations</p>
+    </div>
   );
 }
 

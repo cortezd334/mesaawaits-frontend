@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom'
 import Map from './Map'
 import { Marker } from '@react-google-maps/api';
@@ -92,17 +92,24 @@ export default function MapView({restaurants, center, getLocation, user, setUser
         setUser(prevUser => ({...prevUser, user:{ ...prevUser.user, favorites: fav}}))
     }
 
+    const [selectedRest, setSelectedRest] = useState(null)
     function restMarkers() {
         return restaurants.map(restaurant => {
             
             const rest = restaurant.coordinates
-            return <Marker key={restaurant.id} icon={{url: utensils_icon, scaledSize: new window.google.maps.Size(20,20)}} position={{lat: rest.latitude, lng: rest.longitude}}></Marker>
+            return <Marker key={`2${restaurant.id}`} icon={{url: utensils_icon, scaledSize: new window.google.maps.Size(20,20)}} position={{lat: rest.latitude, lng: rest.longitude}} onClick={() => {
+                setSelectedRest(restaurant) 
+                console.log('hi')
+            // return <Marker key={restaurant.id} icon={{url: utensils_icon, scaledSize: new window.google.maps.Size(20,20)}} position={{lat: rest.latitude, lng: rest.longitude}} onClick={() => {
+            //     setSelectedRest([restaurant.name, restaurant.coordinates]) 
+            //     console.log('hi')
+            }}></Marker>
         });
       }
 
     return(
         <>
-            <Map restaurants={restaurants} center={center} restMarkers={restMarkers} getLocation={getLocation}/>
+            <Map restaurants={restaurants} center={center} restMarkers={restMarkers} getLocation={getLocation} selectedRest={selectedRest}/>
             {displayRest()}
         </>
     )
