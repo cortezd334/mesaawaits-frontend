@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
+// import Moment from 'react-moment'
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import { deleteRes } from '../api';
-import { useEffect } from 'react';
 
 export default function Reso({user, setUser}) {
 
@@ -15,10 +15,11 @@ export default function Reso({user, setUser}) {
     function viewReservations() {
         console.log(user.reservations)
         return user.reservations.map(res => {
+            // const dateToFormat = res.date
             return <Card key={res.id}>
                 <h3>{res.restaurant.name}</h3>
                 <br/>
-                <p>{res.date}</p>
+                {/* <Moment>{dateToFormat}</Moment> */}
                 <p>{res.party_size}</p>
                 <Button variant="primary" onClick={() => handleClick(res)}>Delete Reservation</Button>
             </Card>

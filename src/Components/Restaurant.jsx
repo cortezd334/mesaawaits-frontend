@@ -1,7 +1,7 @@
 import React, {useEffect, useRef} from 'react';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-import Image from 'react-bootstrap/Image';
+import Media from 'react-bootstrap/Media';
 import new_heart from '../images/new_heart.png'
 import red_heart from '../images/red_heart.png'
 import { geoSearch, saveRestaurant, addFavorite, delFavorite } from '../api';
@@ -37,65 +37,30 @@ export default function Restaurant({restaurants, setRestaurants, center, user, s
     }
 
     function displayRest() {
-        // if(localStorage.search) {
-        //     console.log(localStorage.search.list)
-        //     //localStorage can not save the object
-        //     //how else do we keep SFO from pulling again? 
 
-        //     // localStorage.search.map(restaurant => {
-        //     //     let cuisine = restaurant.categories.map(cuisine => {
-        //     //         return cuisine.title
-        //     //     })
-        //     //     return <Card key={restaurant.id}>
-        //     //         <h3>{restaurant.name}</h3>
-        //     //         <br/>
-        //     //         <p>{restaurant.rating} Star Rating</p>
-        //     //         <p>{` ${cuisine} `}</p>
-        //     //     </Card>
-        //     // })
-        // } else {
-            // return restaurants.map(restaurant => {
-            //     let cuisine = restaurant.categories.map(cuisine => {
-            //         return cuisine.title
-            //     })
-            //     return <Card key={restaurant.id} style={{ height: '18rem'}}>
-            //         <Card.Img variant='left' src={restaurant.image_url} fluid />
-            //         {/* <Image src={restaurant.image_url} fluid /> */}
-            //             {/* <img className='img' src={restaurant.image_url}/> */}
-            //         <Card.Body>
-            //             <Card.Title>{restaurant.name}</Card.Title>
-            //             <br/>
-            //             <p>{restaurant.rating} Star Rating</p>
-            //             <p>{` ${cuisine} `}</p>
-            //         </Card.Body>
-            //     </Card>
-            // })
-            return restaurants.map(restaurant => {
-                let cuisine = restaurant.categories.map(cuisine => {
-                    return cuisine.title
-                })
-                return <Card key={restaurant.id}>
-                    <div className='imgCon'>
-                        <img className='img' src={restaurant.image_url}/>
-                    </div>
-                    <div className='info'>
-                        <h3>{restaurant.name}</h3>
-                        <br/>
-                        <p>{restaurant.rating} Star Rating</p>
-                        <p>{` ${cuisine.join(', ')} `}</p>
-                    </div>
+        return restaurants.map(restaurant => {
+            let cuisine = restaurant.categories.map(cuisine => {
+                return cuisine.title
+            })
+            return <>
+            <Media className='imgCon' key={restaurant.id}>
+                <img className='mr-3 img' src={restaurant.image_url} alt='restaurant'/>
+                <Media.Body className='info'>
+                    <h3>{restaurant.name}</h3>
+                    <br/>
+                    <p>{restaurant.rating} Star Rating</p>
+                    <p>{` ${cuisine.join(', ')} `}</p>
                     <div>
                         <Button variant="primary" onClick={() => clickHandler(restaurant)}>Make Reservation</Button>
+                        {user.favorites.map(favorite => 
+                            favorite.restaurant.name).includes(restaurant.name) ? 
+                        <img className='icon' src={red_heart} alt='Fav Heart' onClick={() => handleDelete(restaurant)}/> :
+                        <img className='icon' src={new_heart} alt='New Heart' onClick={() => handleAdd(restaurant)}/>}
                     </div>
-                    <div>
-                    {user.favorites.map(favorite => 
-                        favorite.restaurant.name).includes(restaurant.name) ? 
-                    <img className='icon' src={red_heart} alt='Fav Heart' onClick={() => handleDelete(restaurant)}/> :
-                    <img className='icon' src={new_heart} alt='New Heart' onClick={() => handleAdd(restaurant)}/>}
-                    </div>
-                </Card>
-            })
-        // }
+                </Media.Body>
+            </Media>
+            </>
+        })
     }
 
     function clickHandler(rest) {
