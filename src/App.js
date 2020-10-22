@@ -131,7 +131,7 @@ function App() {
         </Route> 
 
         <Route path='/favorites'>
-          <Favorite {...user}/>
+          <Favorite {...user} setUser={setUser}/>
         </Route> 
 
       </Switch>
