@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom'
 import Map from './Map'
 import { Marker } from '@react-google-maps/api';
-import { saveRestaurant, addFavorite } from '../api';
+import { saveRestaurant, addFavorite, delFavorite } from '../api';
 import utensils_icon from '../images/utensils_icon.png'
 import new_heart from '../images/new_heart.png'
 import red_heart from '../images/red_heart.png'
@@ -11,7 +11,7 @@ import Button from 'react-bootstrap/Button';
 
 // import Restaurant from './Restaurant';
 
-export default function MapView({restaurants, center, getLocation, userFavs, setUserFavs}) {
+export default function MapView({restaurants, center, getLocation, user, setUser}) {
     
     const history = useHistory()
 
@@ -34,17 +34,15 @@ export default function MapView({restaurants, center, getLocation, userFavs, set
                 <Button variant="primary" onClick={() => clickHandler(restaurant)}>Make Reservation</Button>
                 </div>
                 <div>
-                    {/* turnary where if restaurant belongs to favs different image  */}
-
-                    {/* {userFavs.includes(restaurant => { restaurant.name}.name) ? 
-                    <img className='icon' src={red_heart} alt='Fav Heart' onClick={() => handleAdd(restaurant)}/> : */}
-                    {<img className='icon' src={new_heart} alt='New Heart' onClick={() => handleAdd(restaurant)}/>}
+                    {user.favorites.map(favorite => 
+                        favorite.restaurant.name).includes(restaurant.name) ? 
+                    <img className='icon' src={red_heart} alt='Fav Heart' onClick={() => handleDelete(restaurant)}/> :
+                    <img className='icon' src={new_heart} alt='New Heart' onClick={() => handleAdd(restaurant)}/>}
                 </div>
             </Card>
         })
     }
 
-    console.log(userFavs)
     function clickHandler(rest) {
         console.log(rest)
 
@@ -87,7 +85,14 @@ export default function MapView({restaurants, center, getLocation, userFavs, set
         }
 
         addFavorite(info)
-        .then(json => setUserFavs(prevState => ([...prevState, json])))
+        .then(console.log)
+    }
+
+    function handleDelete(rest) {
+        const data = user.favorites.filter(favorite => favorite.restaurant.name === rest.name)
+        delFavorite(data[0])
+        const fav = user.favorites.filter(favorite => favorite.restaurant.name !== rest.name)
+        setUser(prevUser => ({...prevUser, user:{ ...prevUser.user, favorites: fav}}))
     }
 
     function restMarkers() {

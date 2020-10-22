@@ -3,11 +3,12 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Image from 'react-bootstrap/Image';
 import new_heart from '../images/new_heart.png'
-import { geoSearch, saveRestaurant, addFavorite } from '../api';
+import red_heart from '../images/red_heart.png'
+import { geoSearch, saveRestaurant, addFavorite, delFavorite } from '../api';
 import { Link, useHistory } from 'react-router-dom'
 
 
-export default function Restaurant({restaurants, setRestaurants, center, userFavs, setUserFavs}) {
+export default function Restaurant({restaurants, setRestaurants, center, user, setUser}) {
 
     const history = useHistory()
     
@@ -92,8 +93,10 @@ export default function Restaurant({restaurants, setRestaurants, center, userFav
                         <Button variant="primary" onClick={() => clickHandler(restaurant)}>Make Reservation</Button>
                     </div>
                     <div>
-                        {/* turnary where if restaurant belongs to favs different image  */}
-                        <img className='icon' src={new_heart} alt='New Heart' onClick={() => handleAdd(restaurant)}/>
+                    {user.favorites.map(favorite => 
+                        favorite.restaurant.name).includes(restaurant.name) ? 
+                    <img className='icon' src={red_heart} alt='Fav Heart' onClick={() => handleDelete(restaurant)}/> :
+                    <img className='icon' src={new_heart} alt='New Heart' onClick={() => handleAdd(restaurant)}/>}
                     </div>
                 </Card>
             })
@@ -141,7 +144,15 @@ export default function Restaurant({restaurants, setRestaurants, center, userFav
         }
 
         addFavorite(info)
-        .then(json => setUserFavs(prevState => ({...prevState, ...json})))
+        .then(console.log)
+
+        // addFavorite(info)
+        // .then(json => setUserFavs(prevState => ({...prevState, ...json})))
+    }
+
+    function handleDelete(rest) {
+        const data = user.favorites.filter(favorite => favorite.restaurant.name === rest.name)
+        delFavorite(data[0])
     }
 
     return(

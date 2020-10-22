@@ -23,7 +23,7 @@ function LogIn({ user, setUser, handleAuthResp}) {
             console.log(json)
             if(!json.error){
                 handleAuthResp(json)
-                history.push('/profile')
+                history.push('/restaurants')
             } else {
                 alert(json.error)
             }
