@@ -110,7 +110,7 @@ export async function saveRestaurant(data) {
 export async function deleteRes(data) {
     const resp = await fetch(`${API}/reservations/${data.id}`, {
         method: 'DELETE',
-        // headers: headers,
+        headers: authHeaders,
     })
     // return await resp.json();
 }
@@ -128,7 +128,6 @@ export async function deleteRes(data) {
 //          Favorite Calls
 
 export async function addFavorite(data) {
-    console.log(data)
     const resp = await fetch(`${API}/favorites`, {
         method: 'POST',
         headers: authHeaders,
@@ -137,10 +136,17 @@ export async function addFavorite(data) {
     return await resp.json();
 }
 
-export async function getFav() {
-    const resp = await fetch(`${API}/favorites`, {
-        headers: authHeaders
+export async function delFavorite(data) {
+    const resp = await fetch(`${API}/favorites/${data.id}`, {
+        method: 'DELETE',
+        headers: authHeaders,
     })
-    return await resp.json();
+    // return await resp.json();
 }
+// export async function getFav() {
+//     const resp = await fetch(`${API}/favorites`, {
+//         headers: authHeaders
+//     })
+//     return await resp.json();
+// }
 //all authHeaders except signup(create user) login and yelp searches

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 // import './css/App.css';
 import MapView from './Components/MapView';
 import Restaurant from './Components/Restaurant';
@@ -13,25 +13,21 @@ import Favorite from './Components/Favorite';
 import Reservation from './Components/Reservation';
 // import { SearchProvider } from './Components/searchContext';
 import { BrowserRouter as Router, Switch, Route, useHistory } from "react-router-dom";
-import { persist } from './api';
+import { persist, getFav } from './api';
 
 
 
 
 function App() {
 
-  const history = useHistory()
   const [restaurants, setRestaurants] = useState([])
-  const [userFavs, setUserFavs] = useState([])
   const [reso, setReso] = useState({})
   const [user, setUser] = useState({
-    user:{}
+    user:{favorites:[]}
   })
 
   console.log(user)
-  
-  //handleRemove
-  // setUser(updated check reso filter (value vs all))
+
   const [center, setCenter] = useState({
     lat: 37.7599,
     lng: -122.4148
@@ -111,11 +107,11 @@ function App() {
         </Route> 
 
         <Route path='/restaurants'>
-          <Restaurant restaurants={restaurants} setRestaurants={setRestaurants} center={center} getLocation={getLocation} setUserFavs={setUserFavs}/>
+          <Restaurant restaurants={restaurants} setRestaurants={setRestaurants} center={center} getLocation={getLocation} {...user} setUser={setUser}/>
         </Route> 
 
         <Route path='/map'>
-          <MapView restaurants={restaurants} center={center} getLocation={getLocation} userFavs={userFavs} setUserFavs={setUserFavs}/>
+          <MapView restaurants={restaurants} center={center} getLocation={getLocation} {...user} setUser={setUser}/>
         </Route> 
 
         <Route path='/reservation'>
