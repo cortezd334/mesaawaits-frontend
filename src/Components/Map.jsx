@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { GoogleMap, Marker, useLoadScript, InfoWindow } from '@react-google-maps/api';
+import { GoogleMap, Marker, useLoadScript, InfoWindow, InfoBox, LoadScript } from '@react-google-maps/api';
 // import utensils_icon from '../images/utensils_icon.png'
 
-function Map({restaurants, center, restMarkers, getLocation}) {
+function Map({restaurants, center, restMarkers, getLocation, selectedRest}) {
   
   // useEffect(() => {
   //   getLocation()
@@ -66,22 +66,33 @@ function Map({restaurants, center, restMarkers, getLocation}) {
   //   }
   // }
 
-  // const infowindow = new google.maps.InfoWindow({ content: 'hello'})
-
-  function handleClick() {
-    // return <InfoBox options={options}position={center}></InfoBox>
-    // infowindow.open(map, marker)
-  }
+  const options = { closeBoxURL: '', enableEventPropagation: true };
+  const onLoad = infoBox => {
+    console.log('infoBox: ', infoBox)
+  };
 
     return (
-      <GoogleMap
-        mapContainerStyle={containerStyle}
-        center={center}
-        zoom={12}
-        onLoad={onMapLoad}
-        >
-        {restMarkers()}
-      </GoogleMap>
+        <GoogleMap
+          id='InfoBox-example'
+          mapContainerStyle={containerStyle}
+          center={center}
+          zoom={12}
+          onLoad={onMapLoad}
+          >
+          {restMarkers()}
+          {selectedRest &&
+            <InfoBox
+              onLoad={onLoad}
+              options={options}
+              position={{lat: selectedRest.coordinates.latitude, lng: selectedRest.coordinates.longitude}}
+            >
+              <div style={{ backgroundColor: '#99DFE3', opacity: 0.75, padding:12 }}>
+                <div style={{ fontSize: 14, fontColor: `#08233B` }}>
+                  {selectedRest.name}
+                </div>
+              </div>
+            </InfoBox>}
+        </GoogleMap>
     );
 }
 export default React.memo(Map)
