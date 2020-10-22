@@ -28,7 +28,7 @@ export default function MapView({restaurants, center, getLocation, user, setUser
                     <h3>{restaurant.name}</h3>
                     <br/>
                     <p>{restaurant.rating} Star Rating</p>
-                    <p>{` ${cuisine} `}</p>
+                    <p>{` ${cuisine.join(', ')} `}</p>
                 </div>
                 <div>
                 <Button variant="primary" onClick={() => clickHandler(restaurant)}>Make Reservation</Button>
@@ -44,7 +44,6 @@ export default function MapView({restaurants, center, getLocation, user, setUser
     }
 
     function clickHandler(rest) {
-        console.log(rest)
 
         let cuisine = rest.categories.map(cuisine => {
             return cuisine.title
@@ -52,7 +51,7 @@ export default function MapView({restaurants, center, getLocation, user, setUser
 
         const info = {
             name: rest.name,
-            cuisine: {cuisine},
+            cuisine: cuisine.join(', ') ,
             rating: rest.rating,
             latitude: rest.coordinates.latitude,
             longitude: rest.coordinates.longitude,
@@ -61,9 +60,7 @@ export default function MapView({restaurants, center, getLocation, user, setUser
 
         saveRestaurant(info)
         .then(json => {
-            localStorage.setItem('currentResId', json.id) 
-            console.log(json)
-            console.log(localStorage.currentResId)        
+            localStorage.setItem('currentResId', json.id)     
         })
         .then(console.log)
         history.push('/reservation')
@@ -77,7 +74,7 @@ export default function MapView({restaurants, center, getLocation, user, setUser
 
         const info = {
             name: rest.name,
-            cuisine: {cuisine},
+            cuisine: cuisine.join(', ') ,
             rating: rest.rating,
             latitude: rest.coordinates.latitude,
             longitude: rest.coordinates.longitude,

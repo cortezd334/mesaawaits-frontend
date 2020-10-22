@@ -14,16 +14,12 @@ export default function Restaurant({restaurants, setRestaurants, center, user, s
     
     const prevCenter = useRef(center)
     useEffect(() => {
-        console.log(prevCenter.current)
-        console.log(center)
         if( prevCenter.current !== center) {
         loadRest()
         }
     }, [center]);
     //w/ center or empty still loads SFO
     // w/ restaurants correct city but continues to make calls
-
-    console.log(center)
 
     const yelpSearch = {
         search: 'restaurants',
@@ -40,7 +36,6 @@ export default function Restaurant({restaurants, setRestaurants, center, user, s
         })
     }
 
-    console.log(restaurants)
     function displayRest() {
         // if(localStorage.search) {
         //     console.log(localStorage.search.list)
@@ -87,7 +82,7 @@ export default function Restaurant({restaurants, setRestaurants, center, user, s
                         <h3>{restaurant.name}</h3>
                         <br/>
                         <p>{restaurant.rating} Star Rating</p>
-                        <p>{` ${cuisine} `}</p>
+                        <p>{` ${cuisine.join(', ')} `}</p>
                     </div>
                     <div>
                         <Button variant="primary" onClick={() => clickHandler(restaurant)}>Make Reservation</Button>
@@ -104,7 +99,6 @@ export default function Restaurant({restaurants, setRestaurants, center, user, s
     }
 
     function clickHandler(rest) {
-        console.log(rest)
 
         let cuisine = rest.categories.map(cuisine => {
             return cuisine.title
@@ -112,7 +106,7 @@ export default function Restaurant({restaurants, setRestaurants, center, user, s
 
         const info = {
             name: rest.name,
-            cuisine: {cuisine},
+            cuisine: cuisine.join(', ') ,
             rating: rest.rating,
             latitude: rest.coordinates.latitude,
             longitude: rest.coordinates.longitude,
@@ -120,11 +114,8 @@ export default function Restaurant({restaurants, setRestaurants, center, user, s
         }
         saveRestaurant(info)
         .then(json => {
-            localStorage.setItem('currentResId', json.id) 
-            console.log(json)
-            console.log(localStorage.currentResId)        
+            localStorage.setItem('currentResId', json.id)      
         })
-        .then(console.log)
         history.push('/reservation')
     }
 
@@ -136,7 +127,7 @@ export default function Restaurant({restaurants, setRestaurants, center, user, s
 
         const info = {
             name: rest.name,
-            cuisine: {cuisine},
+            cuisine: cuisine.join(', ') ,
             rating: rest.rating,
             latitude: rest.coordinates.latitude,
             longitude: rest.coordinates.longitude,

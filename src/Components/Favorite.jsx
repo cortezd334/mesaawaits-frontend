@@ -8,6 +8,7 @@ export default function Reso({user}) {
     function viewFavorites() {
         return user.favorites.map(favorite => {
             const fav = favorite.restaurant
+            // const type = fav.cuisine.map(cuisine => console.log(cuisine))
             return <Card key={fav.id}>
             <h3>{fav.name}</h3>
             <br/>
