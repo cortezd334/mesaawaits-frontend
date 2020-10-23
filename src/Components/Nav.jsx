@@ -33,10 +33,12 @@ export default function Nav({user, logOut, setRestaurants}) {
         history.push('/map')
     }
     return(
-        <NavBar className='justify-content-between'>
+        <NavBar fixed='top' className='justify-content-between'>
             {/* className='justify-content-between' */}
             {/* <NavLink className='logo' to='/' exact>Logo Will Go Here</NavLink> */}
             <img className='logo' src={waiter} alt='logo'/>
+            <p className='navmesa'>Mesa</p>
+            <p className='navawaits'>AWAITS</p>
             {Object.keys(user).length > 1 ? (
                 <>
                     <NavLink className='item position' to='/restaurants' >Restaurants</NavLink>

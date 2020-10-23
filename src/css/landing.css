@@ -12,9 +12,11 @@ h5.mesa {
     position: fixed;
     bottom: 30%;
     left: 31%;
-
 }
-
+/* #7e8992 */
+/*  */
+/* #95a1ab */
+/* #a8b1b9 */
 h4.awaits {
     font-size: 7rem;
     color: black;
@@ -30,19 +32,26 @@ h4.awaits {
     /* margin: 2.5rem; */
 } 
 .btright {
+    background-color: #a8b1b9;
     position: fixed;
     right: 8%;
     bottom: 60%;
     margin: 2.5rem;
-    
+
+}
+.btright.btn-primary{
+    background-color: #a8b1b9;
+    border-color: black;
 }
 
 .account {
     position: fixed;
-    right: 8%;
-    bottom: 60%;
-    
+    right: 11%;
+    bottom: 61%;
+    color: #a8b1b9;
 }
 /* .landing body {
     background-color: #99DFE3;
 } */
+
+/* #17a2b8 color of blue buttons */

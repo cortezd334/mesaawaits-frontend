@@ -3,16 +3,18 @@
     width: 40rem;
     margin-left: 5rem;
     margin-top: 2rem;
-    background-color: gray;
+    background-color: #a8b1b9;
+    border-radius: 6px;
+    box-shadow: 3px 3px 10px;
 }
 
 .img-Con {
     height: 18rem;
     width: 40rem;
-    /* margin-left: 2rem;
-    margin-right: 2rem; */
     margin: 1rem 2rem;
-    background-color: gray;
+    background-color: #a8b1b9;
+    border-radius: 6px;
+    box-shadow: 3px 3px 10px;
 }
 
 .img {
@@ -40,6 +42,24 @@
 
 .col {
     column-count: 2;
-    column-gap: 5rem;
-    /* float: right; */
+    column-gap: 1rem;
+}
+
+.prof {
+    column-count: 2;
+    column-gap: 1rem;
+    margin-left: 15rem;
+    margin-top: 4rem;
+}
+
+.profcard {
+    margin: 1rem;
+    border-radius: 6px;
+}
+
+.confirm {
+    text-align: center;
+    margin-top: 15rem;
+    position: fixed;
+    left: 22%
 }

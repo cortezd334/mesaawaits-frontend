@@ -1,6 +1,6 @@
 .form {
     position: absolute;
-    right: 40%;
+    right: 43%;
     margin-top: 10rem;
 }
 
@@ -17,9 +17,12 @@
     padding: 1rem;
 }
 
-.login {
-    
+.del {
+    position: fixed;
+    bottom: 8%;
+    left: 35.5%;
 }
-.signup {
-    
+.prl {
+    margin-top: 50px;
+    padding: 1rem;
 }
