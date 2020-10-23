@@ -1,5 +1,32 @@
 .landing {
     background-color: #99DFE3;
+    height: 100vh;
+}
+
+h5 {
+    font-family: 'Pinyon Script', cursive;
+    font-size: 8.75rem;
+    text-decoration: black;
+    /* does this outline in black? */
+    /* outline-style: width: 1rem; */
+    color: white;
+    position: fixed;
+    bottom: 36%;
+    left: 27%;
+
+}
+
+.guy {
+    position: fixed;
+    left: 4%;
+    bottom: 0;
+    /* margin: 2.5rem; */
+} 
+.btright {
+    position: fixed;
+    right: 8%;
+    bottom: 40%;
+    margin: 2.5rem;
 }
 
 /* .landing body {
