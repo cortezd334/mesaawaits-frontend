@@ -28,7 +28,7 @@ export default function Reso({user, setUser}) {
                 }
             }
         }
-
+        
             return <div >
                 <div className='profcard' >
                 <Card  key={res.id} style={{ width: '20rem' }}>
@@ -37,7 +37,7 @@ export default function Reso({user, setUser}) {
                         <Card.Text>
                             {moment(res.date).format('dddd[,] ll')} at {time(res.time)}<br/>
                             for {res.party_size} {res.party_size === 1 ? 'person' : 'people'}.<br/>
-                            {res.occasion === 'false' ? '' : `${res.occation} Celebration`}<br/>
+                            {res.occasion === 'false' ? '' : `${res.occasion} Celebration`}<br/>
                             Special Request/Notes: {res.notes ? res.notes : 'None'}
                         </Card.Text>
                         <Button variant="outline-info" onClick={handleShow}>Delete Reservation</Button>
