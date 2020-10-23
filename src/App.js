@@ -7,7 +7,7 @@ import Search from './Components/Search';
 import Profile from './Components/Profile';
 import SignUp from './Components/SignUp';
 import LogIn from './Components/LogIn';
-import NavBar from './Components/NavBar';
+import Nav from './Components/Nav';
 import Reso from './Components/Reso';
 import ResoConfirmation from './Components/ResoConfirmation';
 import Favorite from './Components/Favorite';
@@ -94,7 +94,7 @@ function App() {
   return (
     <div className='app'>
     <Router>
-      <NavBar user={user} logOut={logOut} setCenter={setCenter}/>
+      <Nav user={user} logOut={logOut} setRestaurants={setRestaurants}/>
       <Switch>
         <Route exact path='/'>
           <LandingPage setUser={setUser}/>

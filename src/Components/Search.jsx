@@ -35,7 +35,7 @@ function Search({restaurants, setRestaurants}) {
 
 //unhandled rejection(typeError)
     // latitude: json.coordinates[latitude], longitude: json.coordinates.longitude,
-    console.log(restaurants)
+    // console.log(restaurants)
     return (
         // <form className='form' onSubmit={handleSubmit}>
         //     <label className='item pad'> Cuisine:

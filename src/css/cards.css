@@ -1,5 +1,18 @@
 .imgCon {
     height: 18rem;
+    width: 40rem;
+    margin-left: 5rem;
+    margin-top: 2rem;
+    background-color: gray;
+}
+
+.img-Con {
+    height: 18rem;
+    width: 40rem;
+    /* margin-left: 2rem;
+    margin-right: 2rem; */
+    margin: 1rem 2rem;
+    background-color: gray;
 }
 
 .img {
@@ -15,9 +28,18 @@
 
 .icon {
     height: 40px;
-    color: red;
+    margin: 0rem 2rem 0rem;
+    float: right;
+    /* color: red; */
 }
 
 .icon:hover {
+    height: 45px;
     fill: red
+}
+
+.col {
+    column-count: 2;
+    column-gap: 5rem;
+    /* float: right; */
 }
