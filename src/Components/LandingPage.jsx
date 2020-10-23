@@ -6,9 +6,10 @@ import Button from 'react-bootstrap/Button';
 export default function LandingPage(){
     return(
         <div className='landing'>
-            <img src={waiter} alt='logo'/>
+            <img className='guy' src={waiter} alt='logo'/>
+            <h5>Mesa</h5>
             <Link to='/login'>
-            <Button variant='secondary'>Book Your Next Dining Experience</Button><br/>
+            <Button className='btright' variant='secondary'>Book Your Next Dining Experience</Button><br/>
             </Link>
             <Link to='signup'>Create an account</Link>
             <p>Your preferred page to book all your restaurant reservations</p>
