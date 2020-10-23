@@ -23,7 +23,7 @@ export default function ResoConfirmation({user, reso}) {
     }
 }
     return(
-        <>
+        <div className='confirm'>
             <Card key={reso.id} style={{ width: '50rem' }}>
                 <Card.Body>
                     <Card.Title>Your MesaAwaits...</Card.Title>
@@ -38,6 +38,6 @@ export default function ResoConfirmation({user, reso}) {
             </Card>
             <Link to='/search'>Find More Restaurants</Link>
             <Link to='/profile'>View Profile</Link>
-        </>
+        </div>
     )
 }

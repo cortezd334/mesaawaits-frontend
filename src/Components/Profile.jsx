@@ -96,10 +96,10 @@ function Profile({user, setUser}) {
                 <Button type='submit' variant="outline-info" onClick={handleUpdateShow}>Update</Button>
             </Form>
 
-            <Button variant="outline-info" onClick={handleShow}>Delete Account</Button>
+            <Button className='del' variant="outline-info" onClick={handleShow}>Delete Account</Button>
 
-            <Link to='/myreservations'>View Upcoming Reservations</Link>
-            <Link to='/favorites'>View Favorite Restaurants</Link>
+            <Link to='/myreservations' className='prl'>View Upcoming Reservations</Link>
+            <Link to='/favorites' className='prl'>View Favorite Restaurants</Link>
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>Delete Your Account?

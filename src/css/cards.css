@@ -56,3 +56,10 @@
     margin: 1rem;
     border-radius: 6px;
 }
+
+.confirm {
+    text-align: center;
+    margin-top: 15rem;
+    position: fixed;
+    left: 22%
+}
