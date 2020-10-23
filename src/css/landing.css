@@ -5,31 +5,44 @@
 
 h5.mesa {
     font-family: 'Pinyon Script', cursive;
-    /* font-size: 67px; */
     font-size: 8.75rem;
-    text-decoration: black;
-    /* does this outline in black? */
-    /* outline-style: width: 1rem; */
+    -webkit-text-stroke: .2px black;
+    /* text-decoration: black; */
     color: white;
     position: fixed;
-    bottom: 36%;
-    left: 27%;
+    bottom: 30%;
+    left: 31%;
 
+}
+
+h4.awaits {
+    font-size: 7rem;
+    color: black;
+    position: fixed;
+    bottom: 19%;
+    right: 30%;
 }
 
 .guy {
     position: fixed;
-    left: 4%;
+    left: 0;
     bottom: 0;
     /* margin: 2.5rem; */
 } 
 .btright {
     position: fixed;
     right: 8%;
-    bottom: 40%;
+    bottom: 60%;
     margin: 2.5rem;
+    
 }
 
+.account {
+    position: fixed;
+    right: 8%;
+    bottom: 60%;
+    
+}
 /* .landing body {
     background-color: #99DFE3;
 } */

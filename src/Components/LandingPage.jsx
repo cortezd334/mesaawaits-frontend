@@ -8,11 +8,12 @@ export default function LandingPage(){
         <div className='landing'>
             <img className='guy' src={waiter} alt='logo'/>
             <h5 className='mesa'>Mesa</h5>
+            <h4 className='awaits'>AWAITS</h4>
             <Link to='/login'>
             <Button className='btright' variant='secondary'>Book Your Next Dining Experience</Button><br/>
             </Link>
-            <Link to='signup'>Create an account</Link>
-            <p>Your preferred page to book all your restaurant reservations</p>
+            <Link className='account a' to='signup'>Create an account</Link>
+            {/* <p>Your preferred page to book all your restaurant reservations</p> */}
         </div>
     )
 }
