@@ -21,7 +21,7 @@ function Map({restaurants, center, restMarkers, getLocation, selectedRest}) {
   //with nothing it doesn't leave geocode (useEffect call on App page) location (markers will only show if rests are in current map city)
 
   const containerStyle = {
-    height: "750px",
+    height: "600px",
     width: "600px"
   }
   

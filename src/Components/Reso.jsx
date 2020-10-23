@@ -29,19 +29,21 @@ export default function Reso({user, setUser}) {
             }
         }
 
-            return <>
-                <Card key={res.id} style={{ width: '20rem' }}>
-                <Card.Body>
-                    <Card.Title>{res.restaurant.name}</Card.Title>
-                    <Card.Text>
-                        {moment(res.date).format('dddd[,] ll')} at {time(res.time)}<br/>
-                        for {res.party_size} {res.party_size === 1 ? 'person' : 'people'}.<br/>
-                        {res.occasion === 'false' ? '' : `${res.occation} Celebration`}<br/>
-                        Special Request/Notes: {res.notes ? res.notes : 'None'}
-                    </Card.Text>
-                    <Button variant="outline-info" onClick={handleShow}>Delete Reservation</Button>
-                </Card.Body>
-            </Card>
+            return <div >
+                <div className='profcard' >
+                <Card  key={res.id} style={{ width: '20rem' }}>
+                    <Card.Body>
+                        <Card.Title>{res.restaurant.name}</Card.Title>
+                        <Card.Text>
+                            {moment(res.date).format('dddd[,] ll')} at {time(res.time)}<br/>
+                            for {res.party_size} {res.party_size === 1 ? 'person' : 'people'}.<br/>
+                            {res.occasion === 'false' ? '' : `${res.occation} Celebration`}<br/>
+                            Special Request/Notes: {res.notes ? res.notes : 'None'}
+                        </Card.Text>
+                        <Button variant="outline-info" onClick={handleShow}>Delete Reservation</Button>
+                    </Card.Body>
+                </Card>
+                </div>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>Delete Your Reservation?
                 </Modal.Header>
@@ -54,7 +56,7 @@ export default function Reso({user, setUser}) {
                     <Button variant="outline-info"  onClick={handleClose}>Keep Reservation</Button>
                 </Modal.Footer>
             </Modal>
-            </>
+            </div>
         })
     }
 
@@ -65,10 +67,12 @@ export default function Reso({user, setUser}) {
         setUser(prevUser => ({...prevUser, user:{ ...prevUser.user, reservations: filRes}}))
     }
     return(
-        <>
+        <div >
             <h2> Upcoming Reservations</h2>
+            <div className='prof'>
             {user && user.reservations.length > 0 ? viewReservations() : <p>'No Upcoming Reservations'</p>}
+            </div>
             <Link to='/profile'>Back to Profile</Link>
-        </>
+        </div>
     )
 }

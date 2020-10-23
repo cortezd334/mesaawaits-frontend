@@ -10,7 +10,7 @@ export default function LandingPage(){
             <h5 className='mesa'>Mesa</h5>
             <h4 className='awaits'>AWAITS</h4>
             <Link to='/login'>
-            <Button className='btright' variant='secondary'>Book Your Next Dining Experience</Button><br/>
+            <Button className='btright'>Book Your Next Dining Experience</Button><br/>
             </Link>
             <Link className='account a' to='signup'>Create an account</Link>
             {/* <p>Your preferred page to book all your restaurant reservations</p> */}
