@@ -32,6 +32,8 @@ function App() {
     lng: -122.4148
   })
   
+  console.log(center)
+  console.log(restaurants)
   
   useEffect(() => {
     if(localStorage.token){
@@ -39,30 +41,26 @@ function App() {
       .then(json => handleAuthResponse(json))
     }
   }, [])
-  //will run again when the dependency changes: maybe put user in []
   
   useEffect(() => {
+    console.log('hola', user)
+    console.log(user.token)
+    if(!!user.token) {
     getLocation()
-  }, []);
-  //empty it only calls once
-  //center it keeps making calls
+    }
+  }, [user]);
 
 
-    function restMapLocation() {
-    let first = restaurants[0].coordinates
-    const location = {lat: first.latitude, lng: first.longitude}
-    setCenter(location)
+  function restMapLocation() {
+  let first = restaurants[0].coordinates
+  const location = {lat: first.latitude, lng: first.longitude}
+  setCenter(location)
   }
 
   function showPosition(position) {
     setCenter({lat: position.coords.latitude, lng: position.coords.longitude})
   }
 
-  // function getLocation() {
-  //   if(navigator.geolocation) {
-  //     navigator.geolocation.getCurrentPosition(showPosition)
-  //   }
-  // }
   function getLocation() {
     if(restaurants.length > 0) {
       restMapLocation()
@@ -82,15 +80,21 @@ function App() {
   }
 
   const logOut = () => {
-    setUser({})
+    setUser({
+      user:{favorites:[]}
+    })
+    setRestaurants([])
+    setCenter({
+      lat: 37.7599,
+      lng: -122.4148
+    })
     localStorage.clear()
   }
 
   return (
     <div className='app'>
-    {/* {getLocation()} being called here causes an infinite loop*/}
     <Router>
-      <NavBar user={user} logOut={logOut}/>
+      <NavBar user={user} logOut={logOut} setCenter={setCenter}/>
       <Switch>
         <Route exact path='/'>
           <LandingPage setUser={setUser}/>

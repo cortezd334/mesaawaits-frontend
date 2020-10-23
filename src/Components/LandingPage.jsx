@@ -10,7 +10,7 @@ export default function LandingPage(){
             <Link to='/login'>
             <Button variant='secondary'>Book Your Next Dining Experience</Button><br/>
             </Link>
-            <Link>Create an account</Link>
+            <Link to='signup'>Create an account</Link>
             <p>Your preferred page to book all your restaurant reservations</p>
         </div>
     )
