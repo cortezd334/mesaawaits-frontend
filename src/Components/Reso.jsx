@@ -28,7 +28,7 @@ export default function Reso({user, setUser}) {
                 }
             }
         }
-        
+
             return <div >
                 <div className='profcard' >
                 <Card  key={res.id} style={{ width: '20rem' }}>
@@ -69,7 +69,7 @@ export default function Reso({user, setUser}) {
     return(
         <div >
             <h2> Upcoming Reservations</h2>
-            <div className='prof'>
+            <div >
             {user && user.reservations.length > 0 ? viewReservations() : <p>'No Upcoming Reservations'</p>}
             </div>
             <Link to='/profile'>Back to Profile</Link>
