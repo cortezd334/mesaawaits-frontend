@@ -14,7 +14,7 @@ export default function Restaurant({restaurants, setRestaurants, center, user, s
     
     const prevCenter = useRef(center)
     useEffect(() => {
-        if( prevCenter.current !== center) {
+        if( prevCenter.current.lat !== center.lat || prevCenter.current.lng !== center.lng) {
         loadRest()
         }
     }, [center]);
