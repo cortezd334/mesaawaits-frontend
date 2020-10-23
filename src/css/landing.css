@@ -3,8 +3,9 @@
     height: 100vh;
 }
 
-h5 {
+h5.mesa {
     font-family: 'Pinyon Script', cursive;
+    /* font-size: 67px; */
     font-size: 8.75rem;
     text-decoration: black;
     /* does this outline in black? */

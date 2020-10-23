@@ -14,12 +14,27 @@ export default function Reso({user, setUser}) {
 
     function viewReservations() {
         return user.reservations.map(res => {
+
+        function time(restime){
+            if(restime !== null){
+                const first = restime.split('T')
+                const second = first[1].split(':')
+                if(second[0] > 12){
+                const hour = +second[0] - 12
+                return `${hour}:${second[1]}pm`
+
+                } else {
+                return `${second[0]}:${second[1]}am`
+                }
+            }
+        }
+
             return <>
                 <Card key={res.id} style={{ width: '20rem' }}>
                 <Card.Body>
                     <Card.Title>{res.restaurant.name}</Card.Title>
                     <Card.Text>
-                        {moment(res.date).format('dddd[,] ll')} at {moment(res.time).format('LT')}<br/>
+                        {moment(res.date).format('dddd[,] ll')} at {time(res.time)}<br/>
                         for {res.party_size} {res.party_size === 1 ? 'person' : 'people'}.<br/>
                         {res.occasion === 'false' ? '' : `${res.occation} Celebration`}<br/>
                         Special Request/Notes: {res.notes ? res.notes : 'None'}

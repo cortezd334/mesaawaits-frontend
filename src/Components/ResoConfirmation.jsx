@@ -8,19 +8,34 @@ import 'moment-timezone';
 export default function ResoConfirmation({user, reso}) {
 
   console.log(reso)
-    // const time = moment(reso.time)
-    // console.log(moment.utcOffset())
+
+  function time(restime){
+    if(restime !== null){
+        const first = restime.split('T')
+        const second = first[1].split(':')
+        if(second[0] > 12){
+        const hour = +second[0] - 12
+        return `${hour}:${second[1]}pm`
+
+        } else {
+        return `${second[0]}:${second[1]}am`
+        }
+    }
+}
     return(
         <>
-            <h2>Your MesaAwaits...</h2>
-            <br/>
-            <p>...at {reso.restaurant.name}</p>
-            <p>on {moment(reso.date).format('dddd[,] ll')}</p>
-            <p>at {moment(reso.time).format('LT')}</p>
-            {/* <p>at {moment('21:00:00').format('LT')}</p> */}
-            {/* <p>at {time.tz('America/Los_Angeles').format('LT')}</p> */}
-            <p>for {reso.party_size} {reso.party_size === 1 ? 'person' : 'people'} </p>
-            <p>we look forward to seeing you{reso.occasion === 'false' ? '!' : ` and celebrating your ${reso.occasion}!`} </p>
+            <Card key={reso.id} style={{ width: '50rem' }}>
+                <Card.Body>
+                    <Card.Title>Your MesaAwaits...</Card.Title>
+                    <Card.Text>
+                        at {reso.restaurant.name}<br/>
+                        on {moment(reso.date).format('dddd[,] ll')}
+                        at {time(reso.time)}<br/>
+                        for {reso.party_size} {reso.party_size === 1 ? 'person' : 'people'} <br/>
+                        we look forward to seeing you{reso.occasion === 'false' ? '!' : ` and celebrating your ${reso.occasion}!`} 
+                    </Card.Text>
+                </Card.Body>
+            </Card>
             <Link to='/search'>Find More Restaurants</Link>
             <Link to='/profile'>View Profile</Link>
         </>
