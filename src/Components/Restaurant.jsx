@@ -43,7 +43,7 @@ export default function Restaurant({restaurants, setRestaurants, center, user, s
                 return cuisine.title
             })
             return <>
-            <Media className='imgCon' key={restaurant.id}>
+            <Media className='img-Con' key={restaurant.id}>
                 <img className='mr-3 img' src={restaurant.image_url} alt='restaurant'/>
                 <Media.Body className='info'>
                     <h3>{restaurant.name}</h3>
@@ -52,6 +52,8 @@ export default function Restaurant({restaurants, setRestaurants, center, user, s
                     <p>{` ${cuisine.join(', ')} `}</p>
                     <div>
                         <Button variant="outline-info" onClick={() => clickHandler(restaurant)}>Make Reservation</Button>
+                    </div>
+                    <div>
                         {user.favorites.map(favorite => 
                             favorite.restaurant.name).includes(restaurant.name) ? 
                         <img className='icon' src={red_heart} alt='Fav Heart' onClick={() => handleDelete(restaurant)}/> :
@@ -121,8 +123,12 @@ export default function Restaurant({restaurants, setRestaurants, center, user, s
     return(
         <>
             {/* {loadRest()} being called here causes and infinite loop*/}
+            <div className='mlink'>
             <Link to='/map'>View on Map</Link>
-            {displayRest()}
+            </div>
+            <div className='col'>
+                {displayRest()}
+            </div>
         </>
     )
 }

@@ -21,8 +21,8 @@ function Map({restaurants, center, restMarkers, getLocation, selectedRest}) {
   //with nothing it doesn't leave geocode (useEffect call on App page) location (markers will only show if rests are in current map city)
 
   const containerStyle = {
-    height: "400px",
-    width: "800px"
+    height: "750px",
+    width: "600px"
   }
   
   // const [center, setCenter] = useState({
@@ -72,8 +72,10 @@ function Map({restaurants, center, restMarkers, getLocation, selectedRest}) {
   };
 
     return (
+      <div className='right'>
         <GoogleMap
-          id='InfoBox-example'
+          // id='InfoBox-example'
+          
           mapContainerStyle={containerStyle}
           center={center}
           zoom={12}
@@ -93,6 +95,7 @@ function Map({restaurants, center, restMarkers, getLocation, selectedRest}) {
               </div>
             </InfoBox>}
         </GoogleMap>
+        </div>
     );
 }
 export default React.memo(Map)

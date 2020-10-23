@@ -8,7 +8,10 @@
 }
 
 .logo {
+    float: left;
+    position: relative;
     text-decoration: none;
+    height: 50px;
 }
 
 .item {
@@ -17,7 +20,15 @@
     color: black;
 }
 
-/* .position {
-    position: relative;
-    left: 60rem;
-} */
+.position {
+    margin: 1rem;
+    float: right;
+    /* left: 60rem; */
+}
+
+.search {
+    margin-right: 1rem;
+    margin-left: .5rem;
+    float: right;
+    /* left: 60rem; */
+}
