@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { updateUser, deleteUser } from '../api';
@@ -55,7 +56,7 @@ function Profile({user, setUser}) {
         <div>
             <h1>Welcome {user.username}!</h1>
             <br/>
-            <form onSubmit={submitHandler}>
+            {/* <form onSubmit={submitHandler}>
                 <label className='item pad stack'> Name:
                     <input type='text'  value={form.name} name='name' onChange={handleChange}/>
                 </label>
@@ -73,7 +74,27 @@ function Profile({user, setUser}) {
                 </label>
                 <br/>
                 <Button type='submit' variant="outline-info" onClick={handleUpdateShow}>Update</Button>
-            </form>
+            </form> */}
+
+            <Form className='wideform' onSubmit={submitHandler}>
+                <Form.Group controlId="formGroupEmail">
+                    <Form.Label>Name</Form.Label>
+                    <Form.Control type='text'  value={form.name} name='name' onChange={handleChange} />
+                </Form.Group>
+                <Form.Group controlId="formGroupPassword">
+                    <Form.Label>Username</Form.Label>
+                    <Form.Control type='text' value={form.username} name='username' onChange={handleChange} />
+                </Form.Group>
+                <Form.Group controlId="formGroupPassword">
+                    <Form.Label>Age</Form.Label>
+                    <Form.Control type='text' value={form.age} name='age' onChange={handleChange}/>
+                </Form.Group>
+                <Form.Group controlId="formGroupEmail">
+                    <Form.Label>Email address</Form.Label>
+                    <Form.Control type="email" value={form.email} name='email' onChange={handleChange}/>
+                </Form.Group>
+                <Button type='submit' variant="outline-info" onClick={handleUpdateShow}>Update</Button>
+            </Form>
 
             <Button variant="outline-info" onClick={handleShow}>Delete Account</Button>
 

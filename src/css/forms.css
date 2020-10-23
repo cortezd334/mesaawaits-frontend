@@ -4,6 +4,15 @@
     margin-top: 10rem;
 }
 
+.wideform {
+    position: absolute;
+    right: 40%;
+    margin-top: 10rem;
+    width: 25rem;
+    padding: 3rem;
+    /* background-color: gray; */
+}
+
 .pad {
     padding: 1rem;
 }

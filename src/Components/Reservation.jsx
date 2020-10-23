@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from "react-router-dom";
 import ResoConfirmation from './ResoConfirmation';
+import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 // import { newRes } from '../api';
 
@@ -24,6 +25,7 @@ export default function Reservation({user, setUser, setReso}) {
             user_id: localStorage.userId, ...obj}))
     }
 
+    console.log(form.time)
     function handleSubmit(e) {
         e.preventDefault();
 
@@ -47,25 +49,26 @@ export default function Reservation({user, setUser, setReso}) {
 
 
     return(
-    <form className='form' onSubmit={handleSubmit}>
-        <label className='item pad stack'> Name on Reservation:
-            <input type='text' value={form.name} name='name' onChange={handleChange}/>
-        </label>
-        <br/>
-        <label className='event-label item pad stack' for='exampleDate'> Date:
-            <input type='date' id='exampleDate' value={form.date} name='date' onChange={handleChange}/>
-        </label>
-        <br/>
-        <label className='event-label item pad stack' for='eventTime'> Time:
-            <input type='time' id='eventTime' value={form.time} name='time' onChange={handleChange}/>
-        </label>
-        <br/>
-        <label className='item pad stack'> Party Size:
-            <input type='number' value={form.party_size} name='party_size' onChange={handleChange}/>
-        </label>
-        <br/>
-        <label className='item pad stack'> Special Occasion:
-            <select value={form.occasion} name='occasion' onChange={handleChange}>
+    <Form className='form' onSubmit={handleSubmit}>
+        <Form.Group controlId='formGroupName'>
+        <Form.Label className='item'>Name on Reservation</Form.Label>
+            <Form.Control type='text' value={form.name} name='name' onChange={handleChange}/>
+        </Form.Group>
+        <Form.Group controlId='formGroupDate'>
+        <Form.Label className='event-label item' for='exampleDate'> Date</Form.Label>
+            <Form.Control type='date' id='exampleDate' value={form.date} name='date' onChange={handleChange}/>
+        </Form.Group>
+        <Form.Group controlId='formGroupTime'>
+        <Form.Label className='event-label item' for='eventTime'> Time</Form.Label>
+            <Form.Control type='time' id='eventTime' value={`${form.time}:00`} name='time' onChange={handleChange}/>
+        </Form.Group>
+        <Form.Group controlId='formGroupSize'>
+        <Form.Label className='item'> Party Size</Form.Label>
+            <Form.Control type='number' value={form.party_size} name='party_size' onChange={handleChange}/>
+        </Form.Group>
+        <Form.Group controlId='formGroupOccasion'>
+        <Form.Label className='item'> Special Occasion</Form.Label>
+            <Form.Control as='select' className='my-1 mr-sm-2' custom value={form.occasion} name='occasion' onChange={handleChange}>
                 <option value='false'>None</option>
                 <option value='Birthday'>Birthday</option>
                 <option value='Anniversary'>Anniversary</option>
@@ -73,15 +76,13 @@ export default function Reservation({user, setUser, setReso}) {
                 <option value='Wedding'>Wedding</option>
                 <option value='Engagement'>Engagement</option>
                 <option value='Divorce'>Divorce</option>
-            </select>
-        </label>
-        <br/>
-        <label className='item pad stack'> Notes:
-            <textarea value={form.notes} name='notes' onChange={handleChange}/>
-        </label>
-        <br/>
-        {/* <input type='submit' value='Submit'/> */}
+            </Form.Control>
+        </Form.Group>
+        <Form.Group controlId='formGroupNotes'>
+        <Form.Label className='item'> Notes</Form.Label>
+            <Form.Control type='text' value={form.notes} name='notes' onChange={handleChange}/>
+        </Form.Group>
         <Button type='submit' variant="outline-info">Submit</Button>
-    </form>
+    </Form>
     )
 }
