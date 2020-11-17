@@ -9,8 +9,6 @@ import red_heart from '../images/red_heart.png'
 import Media from 'react-bootstrap/Media';
 import Button from 'react-bootstrap/Button';
 
-// import Restaurant from './Restaurant';
-
 export default function MapView({restaurants, center, getLocation, user, setUser}) {
     
     const history = useHistory()
@@ -100,9 +98,6 @@ export default function MapView({restaurants, center, getLocation, user, setUser
             return <Marker key={`2${restaurant.id}`} icon={{url: utensils_icon, scaledSize: new window.google.maps.Size(20,20)}} position={{lat: rest.latitude, lng: rest.longitude}} onClick={() => {
                 setSelectedRest(restaurant) 
                 console.log('hi')
-            // return <Marker key={restaurant.id} icon={{url: utensils_icon, scaledSize: new window.google.maps.Size(20,20)}} position={{lat: rest.latitude, lng: rest.longitude}} onClick={() => {
-            //     setSelectedRest([restaurant.name, restaurant.coordinates]) 
-            //     console.log('hi')
             }}></Marker>
         });
       }

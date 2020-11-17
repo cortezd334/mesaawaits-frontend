@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form'
 
-function SignUp ( {setUser}) {
+function SignUp ({setUser}) {
 
     const history = useHistory();
     const signUp = {
@@ -38,22 +38,6 @@ function SignUp ( {setUser}) {
             <h2>Welcome to MesaAwaits!</h2>
             <h4>Fill out form below to create and account.</h4>
 
-    {/* <form onSubmit={handleSubmit}>
-        <label> Name:
-            <input type='text' value={form.name} name='name' onChange={handleChange}/>
-        </label>
-        <label> Username:
-            <input type='text' value={form.username} name='username' onChange={handleChange}/>
-        </label>
-        <label> Password:
-            <input type='text' value={form.password} name='password' onChange={handleChange}/>
-        </label>
-        <label> Re-Enter Password:
-            <input type='text' value={form.dospassword} name='dospassword' onChange={handleChange}/>
-        </label>
-        {/* <input type='submit' value='Submit'/> */}
-        {/* <Button type='submit' variant="outline-info">Submit</Button>
-    </form> */}
             <Form className='form' onSubmit={handleSubmit}>
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label>Name</Form.Label>

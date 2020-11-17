@@ -5,7 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 
-function Search({restaurants, setRestaurants}) {
+function Search({setRestaurants}) {
 
     const history = useHistory()
 
@@ -28,26 +28,11 @@ function Search({restaurants, setRestaurants}) {
             setRestaurants(
                 json.businesses
             )
-                // localStorage.search = {list: json.businesses}
         })
         history.push('/map')
     }
 
-//unhandled rejection(typeError)
-    // latitude: json.coordinates[latitude], longitude: json.coordinates.longitude,
-    // console.log(restaurants)
     return (
-        // <form className='form' onSubmit={handleSubmit}>
-        //     <label className='item pad'> Cuisine:
-        //         <input type='text' value={form.cuisine} name='cuisine' onChange={handleChange}/>
-        //     </label>
-        //     <label className='item pad'> Location:
-        //         <input type='text' value={form.location} name='location' onChange={handleChange}/>
-        //     </label>
-        //     {/* <input type='submit' value='Submit'/> */}
-        //     <Button type='submit' variant="outline-info">Submit</Button>
-        // </form>
-
         <Form className='form-inline' onSubmit={handleSubmit}>
             <Form.Row>
                 <Form.Group>
