@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from "react-router-dom";
-import ResoConfirmation from './ResoConfirmation';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-// import { newRes } from '../api';
 
 export default function Reservation({user, setUser, setReso}) {
     

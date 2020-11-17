@@ -34,8 +34,6 @@ export default function Nav({user, logOut, setRestaurants}) {
     }
     return(
         <NavBar fixed='top' className='justify-content-between'>
-            {/* className='justify-content-between' */}
-            {/* <NavLink className='logo' to='/' exact>Logo Will Go Here</NavLink> */}
             <img className='logo' src={waiter} alt='logo'/>
             <p className='navmesa'>Mesa</p>
             <p className='navawaits'>AWAITS</p>
@@ -66,21 +64,5 @@ export default function Nav({user, logOut, setRestaurants}) {
             }
             
         </NavBar>
-        // <div className='navbar'>
-        //     <NavLink className='logo' to='/' exact>Logo Will Go Here</NavLink>
-        //     <NavLink className='item position' to='/search' >Search</NavLink>
-        //     <NavLink className='item position' to='/restaurants' >Restaurants</NavLink>
-        //     {Object.keys(user).length > 1 ? (
-        //         <>
-        //             <NavLink className='item position' to='/profile' >Profile</NavLink>
-        //             <NavLink className='item position' to='/' onClick={logOut}>Log Out</NavLink>
-        //         </>
-        //         ) : (
-        //         <>
-        //             <NavLink className='item position' to='/signup'> Create An Account</NavLink>
-        //             <NavLink className='item position' to='/login' >Log In</NavLink>
-        //         </>)
-        //     }
-        // </div>
     )
 }

@@ -13,7 +13,6 @@ export default function LandingPage(){
             <Button className='btright'>Book Your Next Dining Experience</Button><br/>
             </Link>
             <Link className='account a' to='signup'>Create an account</Link>
-            {/* <p>Your preferred page to book all your restaurant reservations</p> */}
         </div>
     )
 }

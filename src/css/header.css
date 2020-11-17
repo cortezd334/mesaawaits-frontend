@@ -1,10 +1,8 @@
 
 .navbar {
     display: block;
-    /* justify-self: flex-end; */
     background-color: #a8b1b9;
     padding: 2rem;
-    /* justify-content: center; */
 }
 
 .logo {
@@ -16,21 +14,18 @@
 
 .item {
     font-size: 24px;
-    /* margin: 0rem 1rem 0rem 1rem; */
     color: black;
 }
 
 .position {
     margin: 1rem;
     float: right;
-    /* left: 60rem; */
 }
 
 .search {
     margin-right: 1rem;
     margin-left: .5rem;
     float: right;
-    /* left: 60rem; */
 }
 
 .navmesa {

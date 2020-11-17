@@ -1,12 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { GoogleMap, Marker, useLoadScript, InfoWindow, InfoBox, LoadScript } from '@react-google-maps/api';
-// import utensils_icon from '../images/utensils_icon.png'
+import React, { useEffect, useRef } from 'react';
+import { GoogleMap, useLoadScript, InfoBox } from '@react-google-maps/api';
 
 function Map({restaurants, center, restMarkers, getLocation, selectedRest}) {
-  
-  // useEffect(() => {
-  //   getLocation()
-  // }, []);
 
   const prevRestaurants = useRef(restaurants)
   useEffect(() => {
@@ -25,17 +20,6 @@ function Map({restaurants, center, restMarkers, getLocation, selectedRest}) {
     width: "600px"
   }
   
-  // const [center, setCenter] = useState({
-  // lat: 37.7599,
-  // lng: -122.4148
-  // })
-
-  // useEffect(() => {
-  //   getLocation()
-  // }, [restaurants]);
-
-  // const [markers, setMarkers] = useState([])
-  
   const {isLoaded, loadError} = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY
   })
@@ -47,24 +31,6 @@ function Map({restaurants, center, restMarkers, getLocation, selectedRest}) {
   
   if(loadError) return 'Error'
   if(!isLoaded) return 'Maps'
-    
-  // function restMapLocation() {
-  //   let first = restaurants[0].coordinates
-  //   const location = {lat: first.latitude, lng: first.longitude}
-  //   setCenter(location)
-  // }
-
-  // function showPosition(position) {
-  //   setCenter({lat: position.coords.latitude, lng: position.coords.longitude})
-  // }
-
-  // function getLocation() {
-  //   if(restaurants.length > 0) {
-  //     restMapLocation()
-  //   } else if(navigator.geolocation) {
-  //     navigator.geolocation.getCurrentPosition(showPosition)
-  //   }
-  // }
 
   const options = { closeBoxURL: '', enableEventPropagation: true };
   const onLoad = infoBox => {
@@ -74,8 +40,6 @@ function Map({restaurants, center, restMarkers, getLocation, selectedRest}) {
     return (
       <div className='right'>
         <GoogleMap
-          // id='InfoBox-example'
-          
           mapContainerStyle={containerStyle}
           center={center}
           zoom={12}

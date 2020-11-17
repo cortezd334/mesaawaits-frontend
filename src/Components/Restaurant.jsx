@@ -59,12 +59,6 @@ export default function Restaurant({restaurants, setRestaurants, center, user, s
                         <img className='icon' src={red_heart} alt='Fav Heart' onClick={() => handleDelete(restaurant)}/> :
                         <img className='icon' src={new_heart} alt='New Heart' onClick={() => handleAdd(restaurant)}/>}
                     </div>
-                    {/* <div>
-                    <Button variant="info" onClick={() => clickHandler(restaurant)}>Make Reservation</Button>
-                    <Button variant="info" onClick={() => clickHandler(restaurant)}>Make Reservation</Button>
-                    <Button variant="info" onClick={() => clickHandler(restaurant)}>Make Reservation</Button>
-                    <Button variant="info" onClick={() => clickHandler(restaurant)}>Make Reservation</Button>
-                    </div> */}
                 </Media.Body>
             </Media>
             </>

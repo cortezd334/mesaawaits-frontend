@@ -28,12 +28,12 @@ MesaAwaits was created by Danira Cortez for Flatiron School's Mod 5 Final Projec
 ## Setup
 Fork and open https://github.com/cortezd334/mesaawaits-backend
 In the terminal run:
-`$ bundle install
-$ rails s`
+`$ bundle install`
+`$ rails s`
 
 Once you fork and open MesaAwaits, run the following in your terminal:
-`$ bundle install
-$ yarn start`
+`$ bundle install`
+`$ yarn start`
 
 ## User Story
 Once an account is created, an user will see restaurants in their area. From this page, they can choose to book a reservation, favorite a restaurant, or view the restaurants on a map. The user also has the option of searching for restaurants in other cities, by typing in the cuisine and location at the top of the page. In map view, the user is able to click on a custom marker to see the name of the restaurant, while the information will be on the left. When a restaurant is favorited the icon will change from a heart with a plus sign to a heart, the restaurant will be stored in the database, and the user will be able to view all their favorite restaurants from their profile. To remove a favorite restaurant, the user can either click on the heart icon, changing it back to a heart with a plus sign, or click on the Remove From Favorites button in the Favorite Restaurants list. When making a reservation, the user will fill in the fields, name, date, time, party size, special occasion, and notes. After submitting, a confirmation of the reservation will pop up with the option to Find More Restaurants or View Profile. The profile page will load with the user's information, which can be edited, a link to view upcoming reservations, a link to view favorite restaurants, and a button to delete account. 
