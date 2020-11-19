@@ -55,8 +55,12 @@
 .profcard {
     margin: 1rem;
     border-radius: 6px;
+    box-shadow: 3px 3px 10px;
 }
 
+.card-body{
+    background-color: (245, 245, 235, 0.4);
+}
 .confirm {
     text-align: center;
     margin-top: 15rem;

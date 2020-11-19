@@ -1,5 +1,15 @@
-.a {
+a {
     text-decoration: none;
+    font-size: 1.5rem;
+    color: black;
+}
+
+a:link{
+    color: black;
+}
+
+a:visited{
+    color: black;
 }
 
 .right {
@@ -33,4 +43,22 @@ h2 {
 .mainpage{
     background-color: #99DFE3;
     height: 100vh;
+}
+
+.container{
+    display: grid;
+    height: 100vh;
+    margin-top: 9rem;
+    grid-template-columns: .5fr 1fr .5fr;
+    grid-template-rows: .8fr 3fr .2fr;
+}
+
+#link{
+    grid-column: 4;
+    grid-row: 1;
+}
+
+#restcontain{
+    grid-column: 2;
+    grid-row: 2;
 }

@@ -43,7 +43,7 @@ export default function Restaurant({restaurants, setRestaurants, center, user, s
                 return cuisine.title
             })
             return <>
-            <Media className='img-Con col' key={restaurant.id}>
+            <Media className='img-Con' key={restaurant.id}>
                 <img className='mr-3 img' src={restaurant.image_url} alt='restaurant'/>
                 <Media.Body className='info'>
                     <h3>{restaurant.name}</h3>
@@ -115,14 +115,14 @@ export default function Restaurant({restaurants, setRestaurants, center, user, s
     }
 
     return(
-        <>
+        <div className='container'>
             {/* {loadRest()} being called here causes and infinite loop*/}
-            <div className='belownav mlink'>
+            <div id='link'>
             <Link to='/map'>View on Map</Link>
             </div>
-            <div className= 'col'>
+            <div id='restcontain'>
                 {displayRest()}
             </div>
-        </>
+        </div>
     )
 }
