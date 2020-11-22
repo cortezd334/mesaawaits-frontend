@@ -13,6 +13,8 @@
 ## General Info
 MesaAwaits was created by Danira Cortez for Flatiron School's Mod 5 Final Project. It combines React, Rails, and the Yelp, Google Maps, and Geolocation APIs, so users can book reservations at restaurants in their area or from their search result.
 
+[![Watch the video](https://img.youtube.com/vi/WzNPjo4vRLk/maxresdefault.jpg)](https://youtu.be/WzNPjo4vRLk)
+
 ## Technologies
 - React
 - Rails
