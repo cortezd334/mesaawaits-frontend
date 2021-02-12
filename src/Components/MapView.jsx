@@ -58,7 +58,6 @@ export default function MapView({restaurants, center, getLocation, user, setUser
         .then(json => {
             localStorage.setItem('currentResId', json.id)     
         })
-        .then(console.log)
         history.push('/reservation')
     }
 
@@ -97,7 +96,6 @@ export default function MapView({restaurants, center, getLocation, user, setUser
             const rest = restaurant.coordinates
             return <Marker key={`2${restaurant.id}`} icon={{url: utensils_icon, scaledSize: new window.google.maps.Size(20,20)}} position={{lat: rest.latitude, lng: rest.longitude}} onClick={() => {
                 setSelectedRest(restaurant) 
-                console.log('hi')
             }}></Marker>
         });
       }

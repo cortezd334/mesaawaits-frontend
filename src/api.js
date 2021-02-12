@@ -95,7 +95,6 @@ export async function persist(data) {
 //          Restaurant Calls
 
 export async function saveRestaurant(data) {
-    console.log(data)
     const resp = await fetch(`${API}/restaurants`, {
         method: 'POST',
         headers: authHeaders,
@@ -112,7 +111,7 @@ export async function deleteRes(data) {
         method: 'DELETE',
         headers: authHeaders,
     })
-    // return await resp.json();
+    return await resp.json();
 }
 
 // export async function newRes(data) {
@@ -141,7 +140,7 @@ export async function delFavorite(data) {
         method: 'DELETE',
         headers: authHeaders,
     })
-    // return await resp.json();
+    return await resp.json();
 }
 // export async function getFav() {
 //     const resp = await fetch(`${API}/favorites`, {

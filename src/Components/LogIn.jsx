@@ -22,7 +22,6 @@ export default function LogIn({handleAuthResp}) {
         e.preventDefault();
         login(form)
         .then(json => {
-            console.log(json)
             if(!json.error){
                 handleAuthResp(json)
                 history.push('/restaurants')

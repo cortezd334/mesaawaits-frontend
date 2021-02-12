@@ -5,8 +5,6 @@ function Map({restaurants, center, restMarkers, getLocation, selectedRest}) {
 
   const prevRestaurants = useRef(restaurants)
   useEffect(() => {
-      console.log(prevRestaurants.current)
-      console.log(restaurants)
       if( prevRestaurants.current !== restaurants) {
       getLocation()
       }

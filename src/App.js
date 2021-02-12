@@ -1,5 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
-// import './css/App.css';
+import React, { useEffect, useState } from 'react';
 import MapView from './Components/MapView';
 import Restaurant from './Components/Restaurant';
 import LandingPage from './Components/LandingPage';
@@ -14,8 +13,8 @@ import Favorite from './Components/Favorite';
 import Reservation from './Components/Reservation';
 import Calendar from './Components/Calendar';
 // import { SearchProvider } from './Components/searchContext';
-import { BrowserRouter as Router, Switch, Route, useHistory } from "react-router-dom";
-import { persist, getFav } from './api';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { persist } from './api';
 
 function App() {
 
@@ -25,15 +24,10 @@ function App() {
     user:{favorites:[]}
   })
 
-  console.log(user)
-
   const [center, setCenter] = useState({
     lat: 37.7599,
     lng: -122.4148
   })
-  
-  console.log(center)
-  console.log(restaurants)
   
   useEffect(() => {
     if(localStorage.token){
@@ -43,8 +37,6 @@ function App() {
   }, [])
   
   useEffect(() => {
-    console.log('hola', user)
-    console.log(user.token)
     if(!!user.token) {
     getLocation()
     }
@@ -64,7 +56,6 @@ function App() {
   function getLocation() {
     if(restaurants.length > 0) {
       restMapLocation()
-    } else if(navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(showPosition)
     }
   }

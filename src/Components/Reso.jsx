@@ -63,7 +63,6 @@ export default function Reso({user, setUser}) {
     function handleClick(res) {
         deleteRes(res)
         const filRes = user.reservations.filter(restaurant => restaurant.id !== res.id)
-        console.log(filRes)
         setUser(prevUser => ({...prevUser, user:{ ...prevUser.user, reservations: filRes}}))
     }
     return(

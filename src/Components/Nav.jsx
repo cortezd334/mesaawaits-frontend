@@ -7,6 +7,8 @@ import Button from 'react-bootstrap/Button';
 import waiter from '../images/waiter.png'
 import { search } from '../api';
 import { useHistory } from 'react-router-dom'
+
+
 export default function Nav({user, logOut, setRestaurants}) {
     const history = useHistory()
 

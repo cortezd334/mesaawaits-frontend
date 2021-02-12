@@ -1,5 +1,4 @@
 import React, {useEffect, useRef} from 'react';
-import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Media from 'react-bootstrap/Media';
 import new_heart from '../images/new_heart.png'

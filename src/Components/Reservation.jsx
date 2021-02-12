@@ -23,11 +23,9 @@ export default function Reservation({user, setUser, setReso}) {
             user_id: localStorage.userId, ...obj}))
     }
 
-    console.log(form.time)
     function handleSubmit(e) {
         e.preventDefault();
 
-        console.log(localStorage.currentResId)
         fetch(`http://localhost:3000/reservations`, {
         method: 'POST',
         headers: {
@@ -39,7 +37,6 @@ export default function Reservation({user, setUser, setReso}) {
         .then(res => res.json())
         .then(json => {
             setReso(json)
-            console.log(user)
             setUser(prevUser => ({...prevUser, user:{ ...prevUser.user, reservations: [...prevUser.user.reservations, json]}}))
             history.push('/confirmation')
         })

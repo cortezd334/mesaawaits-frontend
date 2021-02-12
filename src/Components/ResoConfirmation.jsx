@@ -1,13 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
 import moment from 'moment';
 import 'moment-timezone';
 
 export default function ResoConfirmation({user, reso}) {
-
-  console.log(reso)
 
   function time(restime){
     if(restime !== null){
