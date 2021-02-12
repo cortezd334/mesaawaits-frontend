@@ -42,7 +42,6 @@ function Profile({user, setUser}) {
         e.preventDefault()
 
         updateUser(user, form)
-        .then(console.log)
     }
 
     function deleteAccount() {
@@ -89,6 +88,7 @@ function Profile({user, setUser}) {
                 </Modal.Body>
 
                 <Modal.Footer>
+                    {/* need to do somehting about delete Account/handleClose in deleteAccount call handleClose? */}
                     <Button variant="outline-dark" onClick={handleClose, deleteAccount}>Delete Account</Button>
                     <Button variant="outline-info"  onClick={handleClose}>Take Me Back</Button>
                 </Modal.Footer>
