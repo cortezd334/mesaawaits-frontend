@@ -18,8 +18,7 @@ export default function MapView({restaurants, center, getLocation, user, setUser
             let cuisine = restaurant.categories.map(cuisine => {
                 return cuisine.title
             })
-            return <>
-                <Media className='imgCon' key={restaurant.id}>
+            return <Media className='imgCon' key={restaurant.id}>
                     <img className='mr-3 img' src={restaurant.image_url} alt='restaurant'/>
                     <Media.Body className='info'>
                         <h3>{restaurant.name}</h3>
@@ -35,7 +34,6 @@ export default function MapView({restaurants, center, getLocation, user, setUser
                         </div>
                     </Media.Body>
                 </Media>
-            </>
         })
     }
 
@@ -101,11 +99,11 @@ export default function MapView({restaurants, center, getLocation, user, setUser
       }
 
     return(
-        <>
-            <Map restaurants={restaurants} center={center} restMarkers={restMarkers} getLocation={getLocation} selectedRest={selectedRest}/>
+        <div className='container'>
             <div className='belownav'>
             {displayRest()}
             </div>
-        </>
+            <Map restaurants={restaurants} center={center} restMarkers={restMarkers} getLocation={getLocation} selectedRest={selectedRest}/>
+        </div>
     )
 }

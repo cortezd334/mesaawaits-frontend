@@ -150,6 +150,5 @@ function App() {
 
 export default App;
 
-//restaurants are not loading
-//map loads then changes back to my location
-//restaurants redirect to map
+
+//restaurants redirect to map after search

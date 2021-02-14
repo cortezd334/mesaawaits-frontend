@@ -13,10 +13,16 @@ a:visited{
 }
 
 .right {
-    position: fixed;
+    /* position: fixed;
     right: 2%;
     bottom: 2.5%;
-    margin: 2.5rem;
+    margin: 2.5rem; */
+    width: 60%;
+    height: auto;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 30%;
+    padding: 3rem;
 }
 
 .mlink {
@@ -32,7 +38,9 @@ h2 {
 }
 
 .belownav {
-    margin-top: 9rem;
+    width: 95%;
+    text-align: justify;
+    padding: 6rem;
     background-color: #99DFE3;
 }
 
@@ -42,15 +50,20 @@ h2 {
 
 .mainpage{
     background-color: #99DFE3;
-    height: 100vh;
+    /* height: 100vh; */
 }
 
 .container{
-    display: grid;
+    /* display: grid;
     height: 100vh;
     margin-top: 9rem;
     grid-template-columns: .5fr 1fr .5fr;
-    grid-template-rows: .8fr 3fr .2fr;
+    grid-template-rows: .8fr 3fr .2fr; */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-items: center;
+    margin-top: 9rem;
 }
 
 .cont {
