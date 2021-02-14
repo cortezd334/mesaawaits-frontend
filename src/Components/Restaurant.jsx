@@ -41,8 +41,7 @@ export default function Restaurant({restaurants, setRestaurants, center, user, s
             let cuisine = restaurant.categories.map(cuisine => {
                 return cuisine.title
             })
-            return <>
-            <Media className='img-Con' key={restaurant.id}>
+            return <Media className='img-Con' key={restaurant.id}>
                 <img className='mr-3 img' src={restaurant.image_url} alt='restaurant'/>
                 <Media.Body className='info'>
                     <h3>{restaurant.name}</h3>
@@ -60,7 +59,6 @@ export default function Restaurant({restaurants, setRestaurants, center, user, s
                     </div>
                 </Media.Body>
             </Media>
-            </>
         })
     }
 
@@ -114,7 +112,7 @@ export default function Restaurant({restaurants, setRestaurants, center, user, s
     }
 
     return(
-        <div className='container'>
+        <div className='cont'>
             {/* {loadRest()} being called here causes and infinite loop*/}
             <div id='link'>
             <Link to='/map'>View on Map</Link>

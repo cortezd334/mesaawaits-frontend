@@ -37,6 +37,7 @@ function App() {
   }, [])
   
   useEffect(() => {
+    console.log(user)
     if(!!user.token) {
     getLocation()
     }
@@ -54,11 +55,16 @@ function App() {
   }
 
   function getLocation() {
+    console.log(restaurants)
     if(restaurants.length > 0) {
       restMapLocation()
+    } else if(navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(showPosition)
     }
   }
+
+  console.log(restaurants)
+
 
   const handleAuthResponse = (resp) => {
     if(resp.user){
@@ -143,3 +149,7 @@ function App() {
 }
 
 export default App;
+
+//restaurants are not loading
+//map loads then changes back to my location
+//restaurants redirect to map

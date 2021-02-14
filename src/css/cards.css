@@ -18,9 +18,12 @@
 }
 
 .img {
-    max-height: 80%;
-    width: auto;
-    margin: 1rem;
+    /* max-height: 100%; */
+    width: 50%;
+    height: 100%;
+    /* margin: 1rem; */
+    border-bottom-left-radius: 6px;
+    border-top-left-radius: 6px;
 }
 
 .info {

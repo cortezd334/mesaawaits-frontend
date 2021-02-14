@@ -52,7 +52,7 @@ export default function Reso({user, setUser}) {
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <Button variant="outline-dark" onClick={handleClose, () => handleClick(res)}>Delete Reservation</Button>
+                    <Button variant="outline-dark" onClick={ () => handleClick(res)}>Delete Reservation</Button>
                     <Button variant="outline-info"  onClick={handleClose}>Keep Reservation</Button>
                 </Modal.Footer>
             </Modal>
@@ -61,6 +61,7 @@ export default function Reso({user, setUser}) {
     }
 
     function handleClick(res) {
+        handleClose()
         deleteRes(res)
         const filRes = user.reservations.filter(restaurant => restaurant.id !== res.id)
         setUser(prevUser => ({...prevUser, user:{ ...prevUser.user, reservations: filRes}}))
