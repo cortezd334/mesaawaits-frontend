@@ -53,12 +53,17 @@ h2 {
     grid-template-rows: .8fr 3fr .2fr;
 }
 
+.cont {
+    margin-top: 9rem;
+}
+
 #link{
     grid-column: 4;
     grid-row: 1;
 }
 
 #restcontain{
-    grid-column: 2;
-    grid-row: 2;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 50rem);
+    justify-content: center;
 }
