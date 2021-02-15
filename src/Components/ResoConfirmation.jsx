@@ -4,7 +4,7 @@ import Card from 'react-bootstrap/Card';
 import moment from 'moment';
 import 'moment-timezone';
 
-export default function ResoConfirmation({user, reso}) {
+export default function ResoConfirmation({ reso }) {
 
   function time(restime){
     if(restime !== null){
@@ -26,8 +26,8 @@ export default function ResoConfirmation({user, reso}) {
                     <Card.Title>Your MesaAwaits...</Card.Title>
                     <Card.Text>
                         at {reso.restaurant.name}<br/>
-                        on {moment(reso.date).format('dddd[,] ll')}
-                        at {time(reso.time)}<br/>
+                        on {moment(reso.date).format('dddd[,] ll ')} 
+                         at {time(reso.time)}<br/>
                         for {reso.party_size} {reso.party_size === 1 ? 'person' : 'people'} <br/>
                         we look forward to seeing you{reso.occasion === 'false' ? '!' : ` and celebrating your ${reso.occasion}!`} 
                     </Card.Text>
