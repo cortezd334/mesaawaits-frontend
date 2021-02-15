@@ -68,5 +68,7 @@
     text-align: center;
     margin-top: 15rem;
     position: fixed;
-    left: 22%
+    left: 22%;
+    justify-content: center;
+    justify-items: center;
 }
