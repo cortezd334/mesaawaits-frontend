@@ -43,7 +43,7 @@ export default function Restaurant({restaurants, setRestaurants, center, user, s
                 return cuisine.title
             })
             return <Media className='restcard allmarg acards' key={restaurant.id}>
-                <img className='mr-3 img' src={restaurant.image_url} alt='restaurant'/>
+                <img className='img' src={restaurant.image_url} alt='restaurant'/>
                 <Media.Body className='info'>
                     <h3>{restaurant.name}</h3>
                     <br/>

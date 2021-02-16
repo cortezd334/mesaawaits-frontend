@@ -4,7 +4,3 @@
 @import './header.css';
 @import './forms.css';
 @import './cards.css';
-
-body {
-  background-color: 99DFE3;
-}

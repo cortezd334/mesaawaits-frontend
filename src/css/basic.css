@@ -1,3 +1,6 @@
+/* font-family: 'Pinyon Script', cursive; */
+
+
 .mainpage{
     background-color: #99DFE3;
 }
@@ -10,6 +13,8 @@ h2 {
     text-align: center;
     padding-top: 9rem;
 }
+
+/* links */
 
 a {
     text-decoration: none;
@@ -34,6 +39,7 @@ a:visited{
 }
 
 /* flex: map view */
+
 .containers{
     display: flex;
     flex-direction: row;
@@ -54,6 +60,7 @@ a:visited{
 }
 
 /* grid: reso favs rest(no map)*/
+
 .contain {
     display: grid;
     justify-content: center;
