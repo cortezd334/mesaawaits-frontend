@@ -9,8 +9,7 @@ export default function Reso({user, setUser}) {
     function viewFavorites() {
         return user.favorites.map(favorite => {
             const fav = favorite.restaurant
-            return <div >
-            <Card className='profcard' key={fav.id} style={{ width: '20rem' }}>
+            return <Card className='profcard' key={fav.id} style={{ width: '20rem' }}>
                 <Card.Body>
                     <Card.Title>{fav.name}</Card.Title>
                     <Card.Text>
@@ -20,7 +19,6 @@ export default function Reso({user, setUser}) {
                     <Button variant="outline-info" onClick={() => handleDelete(fav)}>Remove From Favorites</Button>
                 </Card.Body>
             </Card>
-            </div>
         })
     }
 
@@ -34,8 +32,8 @@ export default function Reso({user, setUser}) {
     return(
         <>
             <h2>Favorite Restaurants</h2>
-            <div >
-            {user ? viewFavorites() : <Link to='/search'>Find Your Next Favorite Restaurant</Link>}
+            <div className='contain thirty'>
+            {user.favorites.length > 0 ? viewFavorites() : <p>Find Your Next Favorite Restaurant by Searching Above</p>}
             </div>
             <Link to='/profile'>Back to Profile</Link>
         </>

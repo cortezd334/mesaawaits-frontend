@@ -68,7 +68,6 @@ export default function Reso({user, setUser}) {
     return(
         <div >
             <h2> Upcoming Reservations</h2>
-            {/* <div cd > */}
             <div className='contain thirty'>
             {user && user.reservations.length > 0 ? viewReservations() : <p>'No Upcoming Reservations'</p>}
             </div>
