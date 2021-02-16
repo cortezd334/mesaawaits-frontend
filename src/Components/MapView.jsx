@@ -18,8 +18,8 @@ export default function MapView({restaurants, center, getLocation, user, setUser
             let cuisine = restaurant.categories.map(cuisine => {
                 return cuisine.title
             })
-            return <Media className='imgCon' key={restaurant.id}>
-                    <img className='mr-3 img' src={restaurant.image_url} alt='restaurant'/>
+            return <Media className='restcard mapmarg acards' key={restaurant.id}>
+                    <img className='img' src={restaurant.image_url} alt='restaurant'/>
                     <Media.Body className='info'>
                         <h3>{restaurant.name}</h3>
                         <br/>

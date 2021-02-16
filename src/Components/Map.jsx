@@ -12,6 +12,7 @@ function Map({restaurants, center, restMarkers, getLocation, selectedRest}) {
 
   //with center it keeps calling (but will show proper map w/ markers)
   //with nothing it doesn't leave geocode (useEffect call on App page) location (markers will only show if rests are in current map city)
+  // comparing to prevRestaurants solves above comments
 
   const containerStyle = {
     height: "600px",
@@ -36,7 +37,6 @@ function Map({restaurants, center, restMarkers, getLocation, selectedRest}) {
   };
 
     return (
-      // <div>
       <div className='map'>
         <GoogleMap
           mapContainerStyle={containerStyle}

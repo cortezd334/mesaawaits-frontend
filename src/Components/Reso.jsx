@@ -30,7 +30,7 @@ export default function Reso({user, setUser}) {
             }
 
             return <div key={res.id}>
-                <Card className='profcard'  style={{ width: '20rem' }}>
+                <Card className='prof acards'  style={{ width: '20rem' }}>
                     <Card.Body>
                         <Card.Title>{res.restaurant.name}</Card.Title>
                         <Card.Text>

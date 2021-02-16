@@ -19,6 +19,7 @@ export default function Restaurant({restaurants, setRestaurants, center, user, s
     }, [center]);
     //w/ center or empty still loads SFO
     // w/ restaurants correct city but continues to make calls
+    // w/ comparison to prevCenter allows for proper city based off of center update (fixes above comments)
 
     const yelpSearch = {
         search: 'restaurants',
@@ -41,7 +42,7 @@ export default function Restaurant({restaurants, setRestaurants, center, user, s
             let cuisine = restaurant.categories.map(cuisine => {
                 return cuisine.title
             })
-            return <Media className='img-Con' key={restaurant.id}>
+            return <Media className='restcard allmarg acards' key={restaurant.id}>
                 <img className='mr-3 img' src={restaurant.image_url} alt='restaurant'/>
                 <Media.Body className='info'>
                     <h3>{restaurant.name}</h3>
@@ -113,7 +114,6 @@ export default function Restaurant({restaurants, setRestaurants, center, user, s
 
     return(
         <div className='topmargin'>
-            {/* {loadRest()} being called here causes and infinite loop*/}
             <div id='link'>
             <Link to='/map'>View on Map</Link>
             </div>
