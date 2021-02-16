@@ -11,7 +11,7 @@ export default function Reso({user, setUser}) {
             const fav = favorite.restaurant
             return <Card className='prof acards' key={fav.id} style={{ width: '20rem' }}>
                 <Card.Body>
-                    <Card.Title>{fav.name}</Card.Title>
+                    <Card.Title><h3>{fav.name}</h3></Card.Title>
                     <Card.Text>
                         {fav.cuisine}<br/>
                         {fav.rating} Star Rating
@@ -31,7 +31,7 @@ export default function Reso({user, setUser}) {
 
     return(
         <>
-            <h2>Favorite Restaurants</h2>
+            <h2 className='fancy'>Favorite Restaurants</h2>
             <div className='contain thirty'>
             {user.favorites.length > 0 ? viewFavorites() : <p>Find Your Next Favorite Restaurant by Searching Above</p>}
             </div>
