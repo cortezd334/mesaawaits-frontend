@@ -75,8 +75,16 @@ h2 {
     grid-row: 1;
 }
 
-#restcontain{
+.contain {
     display: grid;
-    grid-template-columns: repeat(auto-fit, 50rem);
     justify-content: center;
+    justify-items: center;
+}
+
+.fifty {
+    grid-template-columns: repeat(auto-fit, 50rem);
+}
+
+.thirty {
+    grid-template-columns: repeat(auto-fit, 30rem);
 }

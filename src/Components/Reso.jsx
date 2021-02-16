@@ -15,23 +15,22 @@ export default function Reso({user, setUser}) {
     function viewReservations() {
         return user.reservations.map(res => {
 
-        function time(restime){
-            if(restime !== null){
-                const first = restime.split('T')
-                const second = first[1].split(':')
-                if(second[0] > 12){
-                const hour = +second[0] - 12
-                return `${hour}:${second[1]}pm`
+            function time(restime){
+                if(restime !== null){
+                    const first = restime.split('T')
+                    const second = first[1].split(':')
+                    if(second[0] > 12){
+                    const hour = +second[0] - 12
+                    return `${hour}:${second[1]}pm`
 
-                } else {
-                return `${second[0]}:${second[1]}am`
+                    } else {
+                    return `${second[0]}:${second[1]}am`
+                    }
                 }
             }
-        }
 
-            return <div >
-                <div>
-                <Card className='profcard' key={res.id} style={{ width: '20rem' }}>
+            return <div key={res.id}>
+                <Card className='profcard'  style={{ width: '20rem' }}>
                     <Card.Body>
                         <Card.Title>{res.restaurant.name}</Card.Title>
                         <Card.Text>
@@ -43,19 +42,19 @@ export default function Reso({user, setUser}) {
                         <Button variant="outline-info" onClick={handleShow}>Delete Reservation</Button>
                     </Card.Body>
                 </Card>
-                </div>
-            <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>Delete Your Reservation?
-                </Modal.Header>
-                <Modal.Body>
-                    <p>Are you sure you want to delete your reservation? Once deleted we can not guarantee future availability.</p>
-                </Modal.Body>
 
-                <Modal.Footer>
-                    <Button variant="outline-dark" onClick={ () => handleClick(res)}>Delete Reservation</Button>
-                    <Button variant="outline-info"  onClick={handleClose}>Keep Reservation</Button>
-                </Modal.Footer>
-            </Modal>
+                <Modal show={show} onHide={handleClose}>
+                    <Modal.Header closeButton>Delete Your Reservation?
+                    </Modal.Header>
+                    <Modal.Body>
+                        <p>Are you sure you want to delete your reservation? Once deleted we can not guarantee future availability.</p>
+                    </Modal.Body>
+
+                    <Modal.Footer>
+                        <Button variant="outline-dark" onClick={ () => handleClick(res)}>Delete Reservation</Button>
+                        <Button variant="outline-info"  onClick={handleClose}>Keep Reservation</Button>
+                    </Modal.Footer>
+                </Modal>
             </div>
         })
     }
@@ -69,7 +68,8 @@ export default function Reso({user, setUser}) {
     return(
         <div >
             <h2> Upcoming Reservations</h2>
-            <div cd >
+            {/* <div cd > */}
+            <div className='contain thirty'>
             {user && user.reservations.length > 0 ? viewReservations() : <p>'No Upcoming Reservations'</p>}
             </div>
             <Link to='/profile'>Back to Profile</Link>
