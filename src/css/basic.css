@@ -1,3 +1,16 @@
+.mainpage{
+    background-color: #99DFE3;
+}
+
+.topmargin {
+    margin-top: 9rem;
+}
+
+h2 {
+    text-align: center;
+    padding-top: 9rem;
+}
+
 a {
     text-decoration: none;
     font-size: 1.5rem;
@@ -12,75 +25,42 @@ a:visited{
     color: black;
 }
 
-.right {
-    /* position: fixed;
-    right: 2%;
-    bottom: 2.5%;
-    margin: 2.5rem; */
-    width: 60%;
-    height: auto;
+/* View on Map link under Restaurant */
+#link{
     position: sticky;
     position: -webkit-sticky;
-    top: 30%;
-    padding: 3rem;
+    top: 20%;
+    margin-left: 5rem;
 }
 
-.mlink {
-    width: 100%;
-    height: 2rem;
-    position: relative;
-    left: 10%;
-}
-
-h2 {
-    text-align: center;
-    padding-top: 9rem;
-}
-
-.belownav {
-    width: 95%;
-    text-align: justify;
-    padding: 6rem;
-    background-color: #99DFE3;
-}
-
-.belownav.mlink {
-    background-color: #99DFE3;
-}
-
-.mainpage{
-    background-color: #99DFE3;
-    /* height: 100vh; */
-}
-
-.container{
-    /* display: grid;
-    height: 100vh;
-    margin-top: 9rem;
-    grid-template-columns: .5fr 1fr .5fr;
-    grid-template-rows: .8fr 3fr .2fr; */
+/* flex: map view */
+.containers{
     display: flex;
     flex-direction: row;
     justify-content: center;
-    justify-items: center;
-    margin-top: 9rem;
 }
 
-.cont {
-    margin-top: 9rem;
+.col {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} 
+
+.map {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 20%;
 }
 
-#link{
-    grid-column: 4;
-    grid-row: 1;
-}
-
+/* grid: reso favs rest(no map)*/
 .contain {
     display: grid;
     justify-content: center;
     justify-items: center;
 }
 
+/* size of grid columns */
 .fifty {
     grid-template-columns: repeat(auto-fit, 50rem);
 }

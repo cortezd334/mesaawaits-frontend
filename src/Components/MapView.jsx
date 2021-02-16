@@ -99,11 +99,13 @@ export default function MapView({restaurants, center, getLocation, user, setUser
       }
 
     return(
-        <div className='container'>
-            <div className='belownav'>
-            {displayRest()}
+        <div className='containers topmargin'>
+            <div className='col'>
+                {displayRest()}
             </div>
-            <Map restaurants={restaurants} center={center} restMarkers={restMarkers} getLocation={getLocation} selectedRest={selectedRest}/>
+            <div className='col'>
+                <Map restaurants={restaurants} center={center} restMarkers={restMarkers} getLocation={getLocation} selectedRest={selectedRest}/>
+            </div>
         </div>
     )
 }
