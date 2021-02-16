@@ -32,7 +32,7 @@ export default function Reso({user, setUser}) {
             return <div key={res.id}>
                 <Card className='prof acards'  style={{ width: '20rem' }}>
                     <Card.Body>
-                        <Card.Title>{res.restaurant.name}</Card.Title>
+                        <Card.Title><h3>{res.restaurant.name}</h3></Card.Title>
                         <Card.Text>
                             {moment(res.date).format('dddd[,] ll')} at {time(res.time)}<br/>
                             for {res.party_size} {res.party_size === 1 ? 'person' : 'people'}.<br/>
@@ -67,7 +67,7 @@ export default function Reso({user, setUser}) {
     }
     return(
         <div >
-            <h2> Upcoming Reservations</h2>
+            <h2 className='fancy'> Upcoming Reservations</h2>
             <div className='contain thirty'>
             {user && user.reservations.length > 0 ? viewReservations() : <p>'No Upcoming Reservations'</p>}
             </div>

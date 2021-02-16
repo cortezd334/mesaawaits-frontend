@@ -9,9 +9,18 @@
     margin-top: 9rem;
 }
 
-h2 {
+h2.fancy {
     text-align: center;
     padding-top: 9rem;
+    padding-bottom: 2rem;
+    font-family: 'Pinyon Script', cursive;
+    font-size: 6rem;
+}
+
+h3 {
+    font-size: 2rem !important;
+    color:#99DFE3;
+    -webkit-text-stroke: .5px black;
 }
 
 /* links */
