@@ -9,7 +9,7 @@ export default function Reso({user, setUser}) {
     function viewFavorites() {
         return user.favorites.map(favorite => {
             const fav = favorite.restaurant
-            return <Card className='profcard' key={fav.id} style={{ width: '20rem' }}>
+            return <Card className='prof acards' key={fav.id} style={{ width: '20rem' }}>
                 <Card.Body>
                     <Card.Title>{fav.name}</Card.Title>
                     <Card.Text>
