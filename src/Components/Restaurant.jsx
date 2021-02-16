@@ -112,7 +112,7 @@ export default function Restaurant({restaurants, setRestaurants, center, user, s
     }
 
     return(
-        <div className='cont'>
+        <div className='topmargin'>
             {/* {loadRest()} being called here causes and infinite loop*/}
             <div id='link'>
             <Link to='/map'>View on Map</Link>

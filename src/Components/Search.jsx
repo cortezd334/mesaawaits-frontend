@@ -30,6 +30,7 @@ function Search({setRestaurants}) {
             )
         })
         history.push('/map')
+        // pushing to map do I want map or restaurant list?
     }
 
     return (

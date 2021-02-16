@@ -37,7 +37,7 @@ function Map({restaurants, center, restMarkers, getLocation, selectedRest}) {
 
     return (
       // <div>
-      <div className='right'>
+      <div className='map'>
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={center}
