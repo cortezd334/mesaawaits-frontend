@@ -117,7 +117,7 @@ export default function Restaurant({restaurants, setRestaurants, center, user, s
             <div id='link'>
             <Link to='/map'>View on Map</Link>
             </div>
-            <div id='restcontain'>
+            <div className='contain fifty'>
                 {displayRest()}
             </div>
         </div>
