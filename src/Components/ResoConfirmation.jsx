@@ -24,7 +24,9 @@ export default function ResoConfirmation({ reso }) {
         <div className='confirm'>
             <Card className='conf acards' key={reso.id}>
                 <Card.Body>
-                    <Card.Title>Your MesaAwaits...</Card.Title>
+                    <Card.Title className='con'>
+                        <h5 className='contitle'>Your </h5><h5 className='mesa conmes'> Mesa</h5><h5 className='contitle'>AWAITS...</h5>
+                    </Card.Title>
                     <Card.Text>
                         at {reso.restaurant.name}<br/>
                         on {moment(reso.date).format('dddd[,] ll ')} 

@@ -7,7 +7,7 @@ export default function LandingPage(){
     return(
         <div className='landing'>
             <img className='guy' src={waiter} alt='logo'/>
-            <h5 className='mesa'>Mesa</h5>
+            <h5 className='land mesa'>Mesa</h5>
             <h4 className='awaits'>AWAITS</h4>
             <Link to='/login'>
             <Button className='btright'>Book Your Next Dining Experience</Button><br/>

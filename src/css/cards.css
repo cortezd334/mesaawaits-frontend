@@ -69,3 +69,16 @@
     justify-self: center;
     margin: 2rem;
 }
+
+.con {
+    display: inline-flex;
+    font-size: 5rem;
+}
+
+.contitle {
+    font-size: 4rem;
+}
+
+.conmes {
+    font-size: 5rem;
+}
