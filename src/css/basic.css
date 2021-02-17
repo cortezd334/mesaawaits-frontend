@@ -84,3 +84,23 @@ a:visited{
 .thirty {
     grid-template-columns: repeat(auto-fit, 30rem);
 }
+
+/* profile page */
+
+.profile {
+    display: grid;
+    text-align: center;
+}
+
+.proflinks {
+    display: grid;
+    border-style: groove;
+    border-color: #a8b1b9;
+    width: 50rem;
+    justify-self: center;
+    padding: 1.5rem;
+}
+
+.prl {
+    padding: 1rem;
+}
