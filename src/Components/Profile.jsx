@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+// import Account from './Components/Account';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
@@ -53,32 +54,32 @@ function Profile({user, setUser}) {
 
     return(
         <div>
-            <h1>Welcome {user.username}!</h1>
+            <h2 className='fancy'>Welcome {user.username}!</h2>
             <br/>
             <Form className='wideform' onSubmit={submitHandler}>
-                <Form.Group controlId="formGroupEmail">
+                <Form.Group>
                     <Form.Label>Name</Form.Label>
-                    <Form.Control type='text'  value={form.name} name='name' onChange={handleChange} />
+                    <Form.Control type='text' placeholder='name' value={form.name} name='name' onChange={handleChange} />
                 </Form.Group>
-                <Form.Group controlId="formGroupPassword">
+                <Form.Group>
                     <Form.Label>Username</Form.Label>
-                    <Form.Control type='text' value={form.username} name='username' onChange={handleChange} />
+                    <Form.Control type='text' placeholder='username' value={form.username} name='username' onChange={handleChange} />
                 </Form.Group>
-                <Form.Group controlId="formGroupPassword">
+                <Form.Group>
                     <Form.Label>Age</Form.Label>
-                    <Form.Control type='text' value={form.age} name='age' onChange={handleChange}/>
+                    <Form.Control type='text' placeholder='age' value={form.age} name='age' onChange={handleChange}/>
                 </Form.Group>
-                <Form.Group controlId="formGroupEmail">
+                <Form.Group>
                     <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" value={form.email} name='email' onChange={handleChange}/>
+                    <Form.Control type="email" placeholder='email' value={form.email} name='email' onChange={handleChange}/>
                 </Form.Group>
                 <Button type='submit' variant="outline-info" onClick={handleUpdateShow}>Update</Button>
+                <Button className='del' variant="outline-info" onClick={handleShow}>Delete Account</Button>
             </Form>
-
-            <Button className='del' variant="outline-info" onClick={handleShow}>Delete Account</Button>
 
             <Link to='/myreservations' className='prl'>View Upcoming Reservations</Link>
             <Link to='/favorites' className='prl'>View Favorite Restaurants</Link>
+            {/* <Link to='/account' className='prl'>Update Profile</Link> */}
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>Delete Your Account?

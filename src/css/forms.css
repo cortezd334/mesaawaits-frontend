@@ -17,9 +17,10 @@
 }
 
 .del {
-    position: fixed;
+    /* position: fixed;
     bottom: 15%;
-    left: 42.5%;
+    left: 42.5%; */
+    margin-left: 1rem;
 }
 .prl {
     margin-top: 50px;
