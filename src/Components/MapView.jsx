@@ -5,7 +5,7 @@ import { Marker } from '@react-google-maps/api';
 import { saveRestaurant, addFavorite, delFavorite } from '../api';
 import utensils_icon from '../images/utensils_icon.png'
 import new_heart from '../images/new_heart.png'
-import red_heart from '../images/red_heart.png'
+import red_heart from '../images/rojo.png'
 import Media from 'react-bootstrap/Media';
 import Button from 'react-bootstrap/Button';
 
@@ -15,6 +15,7 @@ export default function MapView({restaurants, center, getLocation, user, setUser
 
     function displayRest() {
         return restaurants.map(restaurant => {
+            console.log(restaurant)
             let cuisine = restaurant.categories.map(cuisine => {
                 return cuisine.title
             })
@@ -24,7 +25,9 @@ export default function MapView({restaurants, center, getLocation, user, setUser
                         <h3>{restaurant.name}</h3>
                         <br/>
                         <p>{restaurant.rating} Star Rating</p>
+                        <p>{restaurant.price ? ` ${restaurant.price}` : null}</p>
                         <p>{` ${cuisine.join(', ')} `}</p>
+                        <p>{restaurant.display_phone}</p>
                         <div>
                             <Button variant="outline-info" onClick={() => clickHandler(restaurant)}>Make Reservation</Button>
                             {user.favorites.map(favorite => 
@@ -88,11 +91,12 @@ export default function MapView({restaurants, center, getLocation, user, setUser
     }
 
     const [selectedRest, setSelectedRest] = useState(null)
+
     function restMarkers() {
         return restaurants.map(restaurant => {
             
             const rest = restaurant.coordinates
-            return <Marker key={`2${restaurant.id}`} icon={{url: utensils_icon, scaledSize: new window.google.maps.Size(20,20)}} position={{lat: rest.latitude, lng: rest.longitude}} onClick={() => {
+            return <Marker key={`2${restaurant.id}`} icon={{url: utensils_icon, scaledSize: new window.google.maps.Size(40,40)}} position={{lat: rest.latitude, lng: rest.longitude}} onClick={() => {
                 setSelectedRest(restaurant) 
             }}></Marker>
         });

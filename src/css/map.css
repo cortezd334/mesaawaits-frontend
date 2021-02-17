@@ -1,0 +1,9 @@
+.marker {
+    background-color: rgba(153, 223, 227, .75);
+    padding: 12px;
+}
+
+.m-info {
+    font-size: 14px;
+    color: #08233B;
+}
