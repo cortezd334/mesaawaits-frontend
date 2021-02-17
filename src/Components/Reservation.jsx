@@ -51,11 +51,11 @@ export default function Reservation({user, setUser, setReso}) {
         </Form.Group>
         <Form.Group controlId='formGroupDate'>
         <Form.Label className='event-label item' for='exampleDate'> Date</Form.Label>
-            <Form.Control type='date' id='exampleDate' value={form.date} name='date' onChange={handleChange}/>
+            <Form.Control type='date' id='exampleDate' value={form.date} name='date' onChange={handleChange} required/>
         </Form.Group>
         <Form.Group controlId='formGroupTime'>
         <Form.Label className='event-label item' for='eventTime'> Time</Form.Label>
-            <Form.Control type='time' id='eventTime' value={`${form.time}:00`} name='time' onChange={handleChange}/>
+            <Form.Control type='time' min='17:00' max='22:00' step='900' id='eventTime' value={`${form.time}:00`} name='time' onChange={handleChange} required/>
         </Form.Group>
         <Form.Group controlId='formGroupSize'>
         <Form.Label className='item'> Party Size</Form.Label>

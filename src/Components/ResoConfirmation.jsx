@@ -37,7 +37,7 @@ export default function ResoConfirmation({ reso }) {
                 </Card.Body>
             </Card>
             <div>
-            <Link to='/search' className='prl'>Find More Restaurants</Link>
+            {/* <Link to='/search' className='prl'>Find More Restaurants</Link> */}
             <Link to='/profile' className='prl'>View Profile</Link>
             </div>
         </div>
