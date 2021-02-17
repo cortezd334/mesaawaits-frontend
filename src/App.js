@@ -12,8 +12,6 @@ import ResoConfirmation from './Components/ResoConfirmation';
 import Favorite from './Components/Favorite';
 import Reservation from './Components/Reservation';
 import Update from './Components/Update';
-import Calendar from './Components/Calendar';
-// import { SearchProvider } from './Components/searchContext';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { persist } from './api';
 
@@ -141,11 +139,6 @@ function App() {
         <Route path='/update'>
           <Update {...user} setUser={setUser}/>
         </Route>
-
-        {/* for coding purposes */}
-        <Route path='/calendar'>
-          <Calendar {...user} setUser={setUser}/>
-        </Route> 
 
       </Switch>
     </Router>
