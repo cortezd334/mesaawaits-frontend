@@ -11,6 +11,7 @@ import Reso from './Components/Reso';
 import ResoConfirmation from './Components/ResoConfirmation';
 import Favorite from './Components/Favorite';
 import Reservation from './Components/Reservation';
+import Account from './Components/Account';
 import Calendar from './Components/Calendar';
 // import { SearchProvider } from './Components/searchContext';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -136,6 +137,10 @@ function App() {
         <Route path='/favorites'>
           <Favorite {...user} setUser={setUser}/>
         </Route> 
+
+        <Route path='/account'>
+          <Account {...user} setUser={setUser}/>
+        </Route>
 
         {/* for coding purposes */}
         <Route path='/calendar'>

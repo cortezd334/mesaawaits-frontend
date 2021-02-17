@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+// import Account from './Components/Account';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
@@ -78,6 +79,7 @@ function Profile({user, setUser}) {
 
             <Link to='/myreservations' className='prl'>View Upcoming Reservations</Link>
             <Link to='/favorites' className='prl'>View Favorite Restaurants</Link>
+            {/* <Link to='/account' className='prl'>Update Profile</Link> */}
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>Delete Your Account?
