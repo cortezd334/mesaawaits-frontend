@@ -51,8 +51,8 @@ function Map({restaurants, center, restMarkers, getLocation, selectedRest}) {
               options={options}
               position={{lat: selectedRest.coordinates.latitude, lng: selectedRest.coordinates.longitude}}
             >
-              <div style={{ backgroundColor: '#99DFE3', opacity: 0.75, padding:12 }}>
-                <div style={{ fontSize: 14, fontColor: `#08233B` }}>
+              <div className='marker'>
+                <div className='m-info'>
                   {selectedRest.name}
                 </div>
               </div>

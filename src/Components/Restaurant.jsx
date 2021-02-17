@@ -2,7 +2,7 @@ import React, {useEffect, useRef} from 'react';
 import Button from 'react-bootstrap/Button';
 import Media from 'react-bootstrap/Media';
 import new_heart from '../images/new_heart.png'
-import red_heart from '../images/red_heart.png'
+import red_heart from '../images/rojo.png'
 import { geoSearch, saveRestaurant, addFavorite, delFavorite } from '../api';
 import { Link, useHistory } from 'react-router-dom'
 
@@ -48,7 +48,9 @@ export default function Restaurant({restaurants, setRestaurants, center, user, s
                     <h3>{restaurant.name}</h3>
                     <br/>
                     <p>{restaurant.rating} Star Rating</p>
+                    <p>{restaurant.price ? ` ${restaurant.price}` : null}</p>
                     <p>{` ${cuisine.join(', ')} `}</p>
+                    <p>{restaurant.display_phone}</p>
                     <div>
                         <Button variant="outline-info" onClick={() => clickHandler(restaurant)}>Make Reservation</Button>
                     </div>
